@@ -14,14 +14,14 @@ import {
     Col,
     Button,
 } from "reactstrap";
-import 'static/website/css/slide/admin-slide.css'
+import 'static/assets/css/slide.css'
 // core components
 import PanelHeader from "components/Admin/PanelHeader/PanelHeader.js";
 import Nav from "react-bootstrap/Nav";
 import {NavItem} from "react-bootstrap";
 
 export default  function Slide() {
-
+    
         return (
             <>
                 <PanelHeader
@@ -34,20 +34,19 @@ export default  function Slide() {
                 />
                 <div className="content">
                     <Row>
-                        <Col md={12} className='nav-slide' >
-                            <Nav justify >
+                        <Col md={12} className='nav-slide, bgr' >
+                            <Nav justify className="flex-row">
                                <Nav.Item>
-                                   <button className='nav-button btn btn-primary'>Men</button>
+                                   <button className='nav-button btn btn-primary slide-button' eventKey="#home">Men</button>
                                </Nav.Item>
                                 <Nav.Item>
-                                    <button className='nav-button btn btn-primary'>Woman</button>
+                                    <button className='nav-button btn btn-primary slide-button' eventKey="#woman">Woman</button>
                                 </Nav.Item>
                                 <Nav.Item>
-                                    <button className='nav-button btn btn-primary'>Kid</button>
+                                    <button className='nav-button btn btn-primary slide-button'>Kid</button>
                                 </Nav.Item>
                             </Nav>
                         </Col>
-
                     </Row>
                 </div>
             </>

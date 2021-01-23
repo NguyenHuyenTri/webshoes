@@ -30,7 +30,7 @@ if (localAccount!=null){
         { username:'tri@gmail.com', password:'123456',name:'Huyền Trí',role:'admin',token:''},
         { username:'member@gmail.com', password:'123456',name:'Member LocFuho',role:'user',token:''},
         { username:'trine', password:'trine',name:'Member LocFuho',role:'user',token:''},
-        { username:'123', password:'123',name:'Member LocFuho',role:'user',token:''},
+        { username:'tuan', password:'123',name:'Member LocFuho',role:'admin',token:''},
     ]
     localStorage.setItem('localAccount',JSON.stringify(account))
 }
