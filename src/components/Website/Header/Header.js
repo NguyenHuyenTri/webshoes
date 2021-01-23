@@ -86,7 +86,7 @@ export  default class Header extends React.Component {
                                            </NavLink>
                                        </NavItem>
                                        <NavItem>
-                                           <NavLink href="/locfuho/sale" className='hvr-float-shadow'>
+                                           <NavLink href="/locfuho/sale/product" className='hvr-float-shadow'>
                                                SALE
                                            </NavLink>
                                        </NavItem>

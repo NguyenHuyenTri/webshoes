@@ -115,7 +115,7 @@ if (localProduct==null){
         {
             brandName: "Nike",
             productName: "LeBron 18",
-            originalPrice: "5869000",
+            originalPrice: "3509000",
             price: "3509000",
             image: nikeLebron18,
             gender:"Kid's Girls Shoes",
@@ -131,7 +131,7 @@ if (localProduct==null){
         {
             brandName: "Adidas",
             productName: "Adidas Superstar",
-            originalPrice: "2400000",
+            originalPrice: "2200000",
             price: "2400000",
             image: adidasSuperstar,
             gender:"Kid's Girls Shoes",
@@ -140,15 +140,15 @@ if (localProduct==null){
         {
             brandName: "Adidas",
             productName: "Adidas 4D Run 1.0",
-            originalPrice: "5500000",
-            price: "2750000",
+            originalPrice: "5200000",
+            price: "5500000",
             image: adidas4DRun,
             gender:"Kid's Boys Shoes",
         },
         {
             brandName: "Biti's",
             productName: "Hunter X Festive Washed-Green",
-            originalPrice: "890000",
+            originalPrice: "800000",
             price: "899000",
             image: HunterXFestiveWashedGreen,
             gender:"Kid's Boys Shoes",
@@ -156,8 +156,8 @@ if (localProduct==null){
         {
             brandName: "Biti's",
             productName: "Biti's Hunter Nameless Edition",
-            originalPrice: "1499000",
-            price: "1499000",
+            originalPrice: "1900000",
+            price: "2000000",
             image: HunterNamelessEdition,
             gender:"Kid's Boys Shoes",
         },

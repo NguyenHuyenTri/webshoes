@@ -22,4 +22,5 @@ function formatNumber (number){
     }
     return(formatNumber);
 }
+
 export {to_slug,formatNumber}

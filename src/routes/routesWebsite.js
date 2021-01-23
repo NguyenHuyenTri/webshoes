@@ -5,6 +5,7 @@ import Kid from "views/Website/Kid/Kid";
 import ShowProduct from "views/Website/Product/ShowProduct";
 import Login from 'views/Login/Login'
 import Product from "views/Website/Product/Product";
+import Sale from "views/Sale/Sale";
 
 var dashRoutes = [
     //home
@@ -49,6 +50,7 @@ var dashRoutes = [
         path: "/login",
         component: Login,
     },
+    //sale
 ]
 
 export default dashRoutes;

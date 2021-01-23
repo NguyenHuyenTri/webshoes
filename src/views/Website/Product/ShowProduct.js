@@ -24,33 +24,51 @@ function ShowProduct (){
     let  params  = useParams();
     let history = useHistory()
 
-    useEffect(()=>{
 
-    })
     const [postsToShow, setPostsToShow] = useState([]);
     const [next, setNext] = useState(6);
     const [button,setButton]=useState(false)
+    const [sale,setSale]=useState(false)
+    const [isTop, setIsTop] = useState(false);
+
+
     useEffect(()=>{
+
         if (params){
-            if (dataProduct.length===0){
-                productList.map((props,index)=>{
+
+            if (params.value==='sale'&&dataProduct.length===0){
+                setSale(true)
+                productList.map((props)=>{
+                    if (props.price > props.originalPrice){
+                        dataProduct.push(props)
+                    }
+                })
+            }
+
+             if (dataProduct.length===0){
+                productList.map((props)=>{
                     if (to_slug(props.gender).indexOf(to_slug(params.value))>-1){
                         dataProduct.push(props)
                     }
                 })
             }
-            if (dataProduct.length ===0){
+
+             if(dataProduct.length === 0){
                 dataProduct=productList;
             }
         }
-    })
-    const loopWithSlice = (start, end) => {
 
+
+    })
+
+
+    const loopWithSlice = (start, end) => {
         const slicedPosts = dataProduct.slice(start, end);
         arrayProduct = [...arrayProduct, ...slicedPosts];
         setPostsToShow(arrayProduct);
     };
-    const [isTop, setIsTop] = useState(false);
+
+
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
@@ -74,7 +92,7 @@ function ShowProduct (){
 
     const handleShowMorePosts = () => {
         setButton(true)
-        if (arrayProduct.length<=dataProduct.length){
+        if (postsToShow.length <= dataProduct.length){
             setTimeout(()=>{ loopWithSlice(next, next + postsPerPage);
                 setNext(next + postsPerPage);
                 setButton(false)
@@ -88,9 +106,9 @@ function ShowProduct (){
 
 
     const handleSelect=(e)=>{
-        console.log(e);
         setValue(e)
     }
+
     const styleCss ={
         position:'fixed',
         width:'100%',
@@ -99,8 +117,9 @@ function ShowProduct (){
         zIndex:'999',
         top:0,
     }
-    console.log('product'+dataProduct.length)
-    console.log('post'+postsToShow.length)
+    console.log(dataProduct.length);
+    console.log(postsToShow.length);
+
     return (
 
         <>
@@ -149,10 +168,10 @@ function ShowProduct (){
                         </div>
                         <div style={{width : status ===true ?'83%':'100%'}} className='product-right mb-3 '>
                             <Row className='ml-15 mr-15 scroll'>
-                                <DataProduct productList={postsToShow}/>
+                                <DataProduct sale={sale} productList={postsToShow}/>
                             </Row>
 
-                                <div style={{display:postsToShow.length >= dataProduct.length? 'none':'block'}}   className='moreShow text-center ' >
+                                <div style={{display:postsToShow.length>=dataProduct.length? 'none':'block'}}   className='moreShow text-center ' >
                                     <button  style={{'width':'150px'}} onClick={handleShowMorePosts}
                                              className="more-black hvr-float-shadow"
                                             disabled={button===true?true:false}>
