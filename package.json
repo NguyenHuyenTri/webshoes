@@ -1,0 +1,72 @@
+{
+  "name": "webshoes",
+  "version": "1.4.0",
+  "main": "dist/index.js",
+  "private": true,
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@fortawesome/react-fontawesome": "^0.1.14",
+    "axios": "^0.21.1",
+    "bootstrap": "^4.5.0",
+    "chart.js": "2.9.3",
+    "gulp": "4.0.2",
+    "gulp-append-prepend": "1.0.8",
+    "history": "4.10.1",
+    "hover.css": "^2.3.2",
+    "node-sass": "4.14.1",
+    "perfect-scrollbar": "1.5.0",
+    "random-token": "0.0.8",
+    "react": "16.13.1",
+    "react-animated-css": "^1.2.1",
+    "react-animated-slider": "^2.0.0",
+    "react-bootstrap": "^1.4.0",
+    "react-chartjs-2": "2.9.0",
+    "react-collapsible": "^2.8.1",
+    "react-dom": "16.13.1",
+    "react-google-maps": "9.4.5",
+    "react-id-swiper": "^4.0.0",
+    "react-notification-alert": "0.0.12",
+    "react-router": "5.2.0",
+    "react-router-dom": "5.2.0",
+    "react-scripts": "3.4.1",
+    "react-viewer": "^3.2.2",
+    "reactstrap": "8.4.1",
+    "swiper": "^5.3.6"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build && gulp licenses",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
+    "compile-sass": "node-sass src/assets/admin/scss/now-ui-dashboard.scss src/static/assets/css/now-ui-dashboard.css",
+    "minify-sass": "node-sass src/assets/admin/scss/now-ui-dashboard.scss src/static/assets/css/now-ui-dashboard.min.css --output-style compressed",
+    "map-sass": "node-sass src/assets/admin/scss/now-ui-dashboard.scss src/assets/admin/css/now-ui-dashboard.css --source-map true"
+  },
+  "optionalDependencies": {
+    "@types/googlemaps": "3.39.6",
+    "@types/markerclustererplus": "2.1.33",
+    "@types/react": "16.9.36",
+    "jquery": "^3.5.1",
+    "typescript": "3.9.5"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-react-jsx": "^7.12.12",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "prop-types": "^15.7.2"
+  }
+}

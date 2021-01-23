@@ -1,0 +1,180 @@
+.product-show{
+    position: relative;
+    height: 100%;
+}
+.product-show header-product {
+    height: 80px;
+    position: fixed;
+}
+.header-product .btn-primary,
+
+.header-product .btn-primary:active,
+.header-product .btn-primary:visited ,
+.header-product .btn-primary:focus {
+    background-color: white !important;
+    color: black !important;
+    outline: none !important;
+    font-size: 15px;
+}
+.header-product .btn-primary:not([data-action]):not([class*="btn-outline-"]):hover {
+    /*box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.17);*/
+    box-shadow: none;
+
+}
+.navbar.bg-white:not(.navbar-transparent) .nav-item .nav-link:not(.btn):hover {
+    color: #e83e8c;
+}
+.dropdown-menu .dropdown-item:hover, .dropdown-menu .dropdown-item:focus, .bootstrap-select .dropdown-menu.inner li a:hover, .bootstrap-select .dropdown-menu.inner li a:focus {
+    color: #e83e8c;}
+.product-all{
+    box-sizing: border-box;
+    position: relative;
+    z-index:1 ;
+}
+.product-all .product-left{
+    position: relative;
+    width: 0;
+    top: 0;
+    height: auto;
+    background-color: #fff;
+    transition: width 1s ease;
+    height: auto;
+
+}
+.product-all .product-right{
+    position: relative;
+    margin-right: 0 ;
+    float: right;
+    top: 0;
+    right: 0;
+    float: right;
+    width: 100%;
+    background-color: #fff;
+    transition: width 1s ease;
+    height: auto;
+}
+.accordion{
+    margin-left: 10px;
+    width: 100%;
+    color: black;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    margin-bottom: 20px;
+    font-size: 17px;
+    padding: 0;
+}
+.accordion .card-header {
+    background-color: white;
+    color:#333;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.125);
+}
+.accordion  .card-body{
+    padding: 0.5rem;
+}
+footer-product{
+    position: fixed;
+    bottom: 0;
+}
+
+.menu-style {
+    position:fixed;
+    width:100%;
+    height:auto;
+    background:#fff;
+    zIndex:999;
+    top:0;
+    overflow: hidden;
+    -webkit-transition: height 0.3s;
+    -moz-transition: height 0.3s;
+    transition: height 0.3s;
+    text-align:center;
+    line-height:160px;
+}
+.product-price-p{
+    font-size: 16px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #111;
+    background-color: #fff;}
+.product-size{
+    position: relative;
+    z-index: 1;
+    background-color: #ffffff;
+    border: none;
+}
+
+.product-size button{
+    background-color: #fff;
+    color: #333;
+    width: 150px;
+    margin: 0 2px 2px 0px;
+    border: 1px solid #333;
+}
+.product-size button:hover{
+    width: 150px;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #333;
+}
+.product-size button:checked,
+.product-size button:default,
+.product-size button:focus,
+.product-size button:after,
+.product-size button:active {
+    width: 150px;
+    background-color: #fff;
+    color: black;
+    border: 1px solid #e83e8c;
+}
+
+.product-size .add-white:active,
+.product-size .add-white{
+    background-color: white;
+    color: black;
+}
+.product-size .add-black:active,
+.product-size .add-black{
+    background-color: black;
+    color: white;
+}
+.product-size .add-white:focus,
+.product-size .add-white:active,
+.product-size .add-white,
+.product-size .add-black:focus,
+.product-size .add-black:active,
+.product-size .add-black{
+    height: 60px;
+    width: 300px;
+    font-size: 15px;
+    text-align: center;
+    text-align: center;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    padding: 10px 18px 10px 18px;
+    border-radius: 30px;
+    margin-top:0px;
+    left: 0;
+    margin-top:10px;
+    -webkit-transition-duration: 500ms;
+    -o-transition-duration: 500ms;
+    transition-duration: 500ms;
+}
+.product-size .add-white:hover,
+.product-size .add-black:hover{
+    height: 60px;
+    width: 300px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
