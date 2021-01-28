@@ -5,8 +5,9 @@ import Kid from "views/Website/Kid/Kid";
 
 import Login from 'views/Login/Login'
 import Product from "views/Website/Product/Product";
-import AllProducts from "../views/Website/Product/AllProducts";
+import AllProducts from "views/Website/Product/AllProducts";
 import Bag from 'views/Website/Bag/Bag'
+import Pay from "views/Website/Bag/Pay";
 
 var dashRoutes = [
     //home
@@ -56,6 +57,12 @@ var dashRoutes = [
         layout:'/locfuho',
         path: "/bag",
         component: Bag,
+    },
+    //page pay
+    {
+        layout:'/locfuho',
+        path: "/pay",
+        component: Pay,
     },
 ]
 

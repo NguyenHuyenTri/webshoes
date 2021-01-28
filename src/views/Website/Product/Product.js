@@ -11,7 +11,7 @@ import {SearchProduct} from "components/Search";
 import  {formatNumber,CheckBag,CheckIdCard} from "views/to_slug";
 import {bag} from "variables/bag";
 import Modal from "react-bootstrap/Modal";
-import Spinner from "react-bootstrap/Spinner";
+
 
 const Product = () => {
     let params = useParams()
@@ -46,11 +46,12 @@ const Product = () => {
     },[params,history,data,cart])
 
     const  addBag = (data) =>{
+
         setLoad(true)
         if (data){
             let temp = cart ;
             if (temp.length===0){
-                temp.push(data)
+                temp.push(data )
                 setTimeout(()=>{
                     setButton(true);
                     setLoad(false)
