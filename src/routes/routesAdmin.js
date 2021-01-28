@@ -1,18 +1,18 @@
 import Dashboard from "views/Admin/Dashboard.js";
-import Notifications from "views/Admin/Notifications.js";
 import ProductList from "views/Admin/Product/ProductList.js";
-import Typography from "views/Admin/Typography.js";
-import TableList from "views/Admin/TableList.js";
 import Maps from "views/Admin/BrandName/BrandName.js";
-import Slide from  'views/Admin/Slide/Slide'
+import PageHome from 'views/Admin/Page/Home/PageHome'
+import PageMen from "../views/Admin/Page/Men/PageMen";
 
 import "static/assets/css/demo.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "static/assets/scss/now-ui-dashboard.scss?v1.4.0";
 
 // import Upgrade from "views/Upgrade.js";
-import UserPage from "views/Admin/UserPage.js";
 import AddProduct from "views/Admin/Product/AddProduct";
+import PageWoman from "../views/Admin/Page/Woman/PageWoman";
+import PageKid from "../views/Admin/Page/Kid/PageKid";
+
 
 var dashRoutes = [
   {
@@ -53,49 +53,73 @@ var dashRoutes = [
     nav:false,
   },
   {
-    path: "/slide",
-    name: "slides",
-    icon: "files_single-copy-04",
-    component: Slide,
+    path: "/pagehome",
+    name: "Page Home",
+    icon: "education_paper",
+    component: PageHome,
     layout: "/admin",
     display:true,
   },
   {
-    path: "/notifications",
-    name: "Notifications",
-    icon: "ui-1_bell-53",
-    component: Notifications,
+    path: "/pagemen",
+    name: "Page Men",
+    icon: "education_paper",
+    component: PageMen,
     layout: "/admin",
     display:true,
-    nav:false,
   },
   {
-    path: "/user-page",
-    name: "User Profile",
-    icon: "users_single-02",
-    component: UserPage,
+    path: "/pagewoman",
+    name: "Page Woman",
+    icon: "education_paper",
+    component: PageWoman,
     layout: "/admin",
     display:true,
-    nav:false,
   },
   {
-    path: "/extended-tables",
-    name: "Table List",
-    icon: "files_paper",
-    component: TableList,
+    path: "/pagekid",
+    name: "Page Kid",
+    icon: "education_paper",
+    component: PageKid,
     layout: "/admin",
     display:true,
-    nav:false,
   },
-  {
-    path: "/typography",
-    name: "Typography",
-    icon: "design-2_ruler-pencil",
-    component: Typography,
-    layout: "/admin",
-    display:true,
-    nav:false,
-  },
+  // {
+  //   path: "/notifications",
+  //   name: "Notifications",
+  //   icon: "ui-1_bell-53",
+  //   component: Notifications,
+  //   layout: "/admin",
+  //   display:true,
+  //   nav:false,
+  // },
+  // {
+  //   path: "/user-page",
+  //   name: "User Profile",
+  //   icon: "users_single-02",
+  //   component: UserPage,
+  //   layout: "/admin",
+  //   display:true,
+  //   nav:false,
+  // },
+  // {
+  //   path: "/extended-tables",
+  //   name: "Table List",
+  //   icon: "files_paper",
+  //   component: TableList,
+  //   layout: "/admin",
+  //   display:true,
+  //   nav:false,
+  // },
+  // {
+  //   path: "/typography",
+  //   name: "Typography",
+  //   icon: "design-2_ruler-pencil",
+  //   component: Typography,
+  //   layout: "/admin",
+  //   display:true,
+  //   nav:false,
+  // },
   {
     path: "/update/:id",
     name: "Update",

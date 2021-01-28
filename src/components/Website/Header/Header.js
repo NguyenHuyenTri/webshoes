@@ -74,9 +74,14 @@ export  default class Header extends React.Component {
                                                    BRANDS
                                                </DropdownToggle>
                                                <DropdownMenu color="info">
-                                                   <DropdownItem href="/locfuho/men" tag="a"><img src={nike} alt=''  width='25px' height='25px'/> NIKE</DropdownItem>
-                                                   <DropdownItem href="/locfuho/men" tag="a"><img src={adidas} alt=''  width='25px' height='25px'/> ADIDAS</DropdownItem>
-                                                   <DropdownItem  href="/locfuho/men" tag="a"><img src={bitis} alt=''  width='25px' height='25px'/> BITI'S</DropdownItem>
+                                                   <DropdownItem href="/locfuho/men" tag="a"><img src={nike} alt=''
+                                                                     width='25px' height='25px'/> NIKE
+                                                   </DropdownItem>
+                                                   <DropdownItem href="/locfuho/men" tag="a"><img src={adidas} alt=''
+                                                                    width='25px' height='25px'/> ADIDAS</DropdownItem>
+                                                   <DropdownItem  href="/locfuho/men" tag="a"><img src={bitis} alt=''
+                                                                   width='25px' height='25px'/> BITI'S</DropdownItem>
+                                                   <DropdownItem  href="/locfuho/all/product" tag="a"> ALL SHOES</DropdownItem>
                                                </DropdownMenu>
                                            </ButtonDropdown >
                                        </NavItem>
@@ -103,10 +108,20 @@ export  default class Header extends React.Component {
                                            </div>
                                        </div>
                                    </Form>
+                           <Nav>
+                               <NavItem className=''>
+                                   <Link  to="/locfuho/bag" className="nav-link hvr-float-shadow">
+                                       <i style={{'fontSize':'20px'}} className="now-ui-icons shopping_bag-16" />{' '}
+                                       <p>
+                                           <span  className="d-lg-none d-md-block ">Bag</span>
+                                       </p>
+                                   </Link>
+                               </NavItem>
+                           </Nav>
                                     <Nav>
                                         <NavItem className=''>
                                             <Link to="/login" className="nav-link hvr-float-shadow">
-                                           <i className="now-ui-icons users_single-02" />{' '}
+                                           <i style={{'fontSize':'15px'}} className="now-ui-icons users_single-02" />{' '}
                                            <p>
                                                <span className="d-lg-none d-md-block ">Account</span>
                                            </p>

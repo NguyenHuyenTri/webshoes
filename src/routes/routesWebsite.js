@@ -2,10 +2,11 @@ import Home from "views/Website/Home/Home";
 import Men from "views/Website/Men/Men";
 import Woman from "views/Website/Woman/Woman";
 import Kid from "views/Website/Kid/Kid";
-import ShowProduct from "views/Website/Product/ShowProduct";
+
 import Login from 'views/Login/Login'
 import Product from "views/Website/Product/Product";
-import Sale from "views/Sale/Sale";
+import AllProducts from "../views/Website/Product/AllProducts";
+import Bag from 'views/Website/Bag/Bag'
 
 var dashRoutes = [
     //home
@@ -18,7 +19,7 @@ var dashRoutes = [
     {
         layout:'/locfuho',
         path: "/:value/product",
-        component: ShowProduct,
+        component: AllProducts,
     },
     // page product
     {
@@ -50,7 +51,12 @@ var dashRoutes = [
         path: "/login",
         component: Login,
     },
-    //sale
+    //page bag
+    {
+        layout:'/locfuho',
+        path: "/bag",
+        component: Bag,
+    },
 ]
 
 export default dashRoutes;

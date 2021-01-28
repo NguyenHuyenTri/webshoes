@@ -1,10 +1,11 @@
 import React from "react";
 import Swiper from "react-id-swiper";
 
-
+import {formatNumber} from "views/to_slug";
 import { Col, NavLink, Row} from "react-bootstrap";
 import 'static/website/css/slide/slideMore.css'
-import 'swiper/css/swiper.css';
+import {to_slug} from "views/to_slug";
+// import 'swiper/css/swiper.css';
 
 const   SlideProduct = ({slidesData}) =>{
     const config ={
@@ -45,23 +46,25 @@ const   SlideProduct = ({slidesData}) =>{
         freeMode:true,
         longSwipesRatio:0.75,
     }
+
     return(
             <div>
                 <Swiper {...config } >
                     {slidesData.map((slide ,index) =>{
+
                         return(
-                        <NavLink key={index} href='/#' className='slide-product text-dark'>
+                        <NavLink key={index} href={`/locfuho/product/${to_slug(slide.productName)}`} className='slide-product text-dark'>
                         <Row >
                         <Col>
                         <div className="moreShow" >
                         <img  className='img-fluid box-shadow single-trending-post ' src={slide.image} alt=''/>
                         <Row className='mt-3'>
                         <Col>
-                        <h5  style={{'fontSize':'18px'}} className='text-left ml-4 mb-1'>Nike</h5>
-                        <p style={{'fontSize':'16px'}} className='text-left ml-4'>Men's Shoes</p>
+                        <h5  style={{'fontSize':'18px'}} className='text-left ml-4 mb-1'>{slide.brandName}</h5>
+                        <p style={{'fontSize':'16px'}} className='text-left ml-4'>{slide.gender}</p>
                         </Col>
                         <Col>
-                        <p style={{'fontSize':'18px'}} className='text-right mr-4'>2,000,000</p>
+                        <p style={{'fontSize':'18px'}} className='text-right mr-4'>{formatNumber(slide.price)}</p>
                         </Col>
                         </Row>
                         </div>

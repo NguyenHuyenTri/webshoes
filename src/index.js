@@ -11,7 +11,8 @@ import AdminLayout from "layouts/Admin";
 
 import WebsiteLayout from "layouts/Website"
 import Login from "./views/Login/Login";
-import Test from "./layouts/Test";
+// import Test from "components/image/image";
+
 const hist = createBrowserHistory();
 
 function App () {
@@ -21,7 +22,7 @@ function App () {
             <Switch>
                      <Route path="/locfuho/" render={(props) => <WebsiteLayout {...props} />} />
                         <Route path="/login" render={(props) => <Login {...props} />} />
-                <Route path="/test" render={(props) => <Test {...props} />} />
+                {/*<Route path="/test" render={(props) => <Test {...props} />} />*/}
                      <Route path="/admin/" render={(props) => <AdminLayout {...props} />} />
                      <Redirect from="/" to="/locfuho/" />
 

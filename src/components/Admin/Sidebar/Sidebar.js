@@ -4,10 +4,6 @@ import { Nav } from "reactstrap";
 import PerfectScrollbar from "perfect-scrollbar";
 
 import logo from "logo-white.svg";
-import {Collapse,NavItem} from "reactstrap";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-import Accordion from "react-bootstrap/Accordion";
 var ps;
 
 class Sidebar extends React.Component {
@@ -35,15 +31,7 @@ class Sidebar extends React.Component {
       ps.destroy();
     }
   }
-  toggleNavbar = ()=>{
-    if (this.state.collapsed===true){
-      this.setState({collapsed:false})
-    }else {
-      this.setState({collapsed:true})
-    }
-  }
   render() {
-    const {collapsed} =this.state;
     return (
       <div className="sidebar" data-color={this.props.backgroundColor}>
         <div className="logo">

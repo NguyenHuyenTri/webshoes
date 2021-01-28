@@ -1,7 +1,15 @@
 import React from "react";
 import {Button} from "react-bootstrap";
-
+import { useHistory } from "react-router-dom";
 export default function  SlidePoster(props) {
+
+    let history = useHistory()
+
+
+   const nextLink = (link) =>{
+        history.push(link)
+    }
+
     const styleMen ={
         position: 'relative',
         width:'100%',
@@ -18,7 +26,7 @@ export default function  SlidePoster(props) {
                                     <div key={index.id} style={styleMen} className='imageMen'>
                                         <img  src={index.image} alt=''/>
                                         <div className='buttonImg'>
-                                            <Button className='btn-primary hvr-float-shadow'
+                                            <Button onClick={nextLink.bind(this,props.link)} className='btn-primary hvr-float-shadow'
                                             >{index.button}</Button>
                                         </div>
                                     </div>

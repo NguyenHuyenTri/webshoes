@@ -2,10 +2,14 @@ import React from "react";
 
 import 'swiper/css/swiper.css';
 import Button from "react-bootstrap/Button";
+import { useHistory } from "react-router-dom";
+
 
 export default function  SlideImage({data}) {
+    let history = useHistory();
+
     const  clickPath = (path) =>{
-        setTimeout(()=> window.location.href =(path) ,100)
+        history.push(path)
 
     }
     return(

@@ -14,6 +14,7 @@ import {
   Container,
 } from "reactstrap";
 import routes from "routes/routesAdmin";
+import {userlogin} from 'views/Login/useToken'
 
 class Header extends React.Component {
   state = {
@@ -168,7 +169,7 @@ class Header extends React.Component {
                 <DropdownToggle caret nav>
                   <i className="now-ui-icons users_circle-08" />
                   <p>
-                    <span className="d-lg-none d-md-block">User</span>
+                    <span>{userlogin.name}</span>
                   </p>
                 </DropdownToggle>
                 <DropdownMenu right>

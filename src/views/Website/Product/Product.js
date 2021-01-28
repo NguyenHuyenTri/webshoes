@@ -1,97 +1,140 @@
-import React, {  useEffect, useRef } from 'react';
+import React, {useEffect, useState} from 'react';
 import SlideAlert from "components/Website/Slide/SlideAlerts";
 import Row from "react-bootstrap/Row";
 import {productList} from 'variables/product'
 import 'static/website/css/product/product.css'
 import Button from "react-bootstrap/Button";
-import SlideProduct from "../../../components/Website/Slide/SlideProduct";
-import img1data from "../../../static/img/imgProduct/13-Bitis-Hunter-X-Festive -Washed-Green.jpg";
-import img2data from "../../../static/img/imgProduct/02-air-zoom-tempo-next-running-shoe.jpg";
-import img3data from "../../../static/img/imgProduct/03-air-force-1-07-craft-shoe.jpg";
-import img4data from "../../../static/img/imgProduct/08-sb-zoom-stefan-janoski-rm-skate-shoe.jpg";
-import img5data from "../../../static/img/imgProduct/05-zoom-fly-3-running-shoe.jpg";
+import SlideProduct from "components/Website/Slide/SlideProduct";
+import {dataScrollHome} from "variables/slide";
+import {useHistory, useParams} from "react-router";
+import {SearchProduct} from "components/Search";
+import  {formatNumber,CheckBag,CheckIdCard} from "views/to_slug";
+import {bag} from "variables/bag";
+import Modal from "react-bootstrap/Modal";
+import Spinner from "react-bootstrap/Spinner";
+
 const Product = () => {
-    const slidesData = [
-        {
-            id: 1,
-            title: 'repellendus id ullam',
-            label: 'Dolorem officiis temporibus.',
-            image:img1data,
-        }, {
-            id: 2,
-            title: 'excepturi consequatur est',
-            label: 'Officia non provident dolor esse et neque.',
-            image:img2data,
-        }, {
-            id: 3,
-            title: 'eius doloribus blanditiis',
-            label: 'Ut recusandae vel vitae molestiae id soluta.',
-            image:img3data,
-        }, {
-            id: 4,
-            title: 'nihil voluptates delectus',
-            label: 'Qui vel consequatur recusandae illo repellendus.',
-            image:img4data,
-        }, {
-            id: 5,
-            title: 'nemo dolorem necessitatibus',
-            label: 'Placeat odit velit itaque voluptatem.',
-            image:img5data,
-        },
-        {
-            id: 5,
-            title: 'nemo dolorem necessitatibus',
-            label: 'Placeat odit velit itaque voluptatem.',
-            image:img5data,
-        },
-    ];
+    let params = useParams()
+    let history =useHistory()
+
+    let [data ,setData]=useState([])
+    let [image,setImage]=useState([])
+    const [cart,setCard]=useState(bag)
+    const [button,setButton]=useState(false)
+    const [show, setShow] = useState(false);
+    const [load,setLoad]=useState(false)
+    const handleClose = () => setShow(false);
+
+
+
+    useEffect(()=>{
+            if (params){
+                let temp = [] ;
+                temp=(SearchProduct(params.value,productList,'productName'));
+                temp.map((props)=>{
+                   setImage((props.dataImage))
+                    setData(props)
+                    return null;
+                })
+                if (bag.length > 0 &&( CheckBag(cart,data['productName']))===true){
+                    setButton(true)
+                }
+                if (temp.length===0){
+                    history.push('/locfuho/all/product')
+                }
+            }
+    },[params,history,data,cart])
+
+    const  addBag = (data) =>{
+        setLoad(true)
+        if (data){
+            let temp = cart ;
+            if (temp.length===0){
+                temp.push(data)
+                setTimeout(()=>{
+                    setButton(true);
+                    setLoad(false)
+                },1000)
+                localStorage.setItem('localBag',JSON.stringify(temp));
+            }else {
+                if (( CheckBag(temp,data['productName']))===true){
+                    setShow(true)
+                    setTimeout(()=>{ setButton(false);setLoad(false)},1000)
+                }else {
+                    temp.unshift(data)
+                    setCard(temp);
+                    setTimeout(()=>{ setButton(true);setLoad(false)},1000)
+                    localStorage.setItem('localBag',JSON.stringify(temp));
+                }
+            }
+        }
+    }
+    const cancelBag = (data) =>{
+        setLoad(true)
+        if(data){
+            let temp = cart ;
+            if (( CheckBag(cart,data['productName']))===true){
+                let x = ''
+                x = (CheckIdCard(cart,data['productName']));
+                temp.splice(x,1)
+                setCard(temp);
+                setTimeout(()=>{ setButton(false);setLoad(false)},1000)
+                localStorage.setItem('localBag',JSON.stringify(temp));
+            }
+        }
+    }
+
     return (
         <>
            <div className='body-website'>
                 <SlideAlert/>
                 <Row className='ml-15 mr-15  mt-30'>
-                        <div className="col-9">
+                        <div className="col-12 col-md-9">
                             <Row className='ml-30 mr-30'>
-                                {productList.map((prop ,index)=>{
-                                    return(
-                                        <div key={index} className='col-12 col-md-6 col-lg-6 p-2' >
-                                            <div className="moreShow" >
-                                                <img height='500px' width='500px' className='img-fluid box-shadow single-trending-post ' src={prop.image} alt=''/>
+                                {image.map((prop,index )=>{
+                                        return(
+                                            <div key={index} className='col-12  col-lg-6 p-2' >
+                                                <div className="moreShow" >
+                                                    <img height='500px' width='500px' className='img-fluid box-shadow single-trending-post '
+                                                         src={prop} alt=''/>
+                                                </div>
                                             </div>
-                                        </div>
-                                    )
-                                })}
+                                        )
+                                    })}
                             </Row>
                         </div>
-                        <div className="col-3  ">
-                            <Row className='mr-15'>
+                        <div className="col-12 col-md-3 mt-5 mt-md-0">
+                            <Row  className='mr-15'>
                                     <div className="col-8">
-                                        <h6 className='headline-5-small'>MEN'S SHOES</h6>
+                                        <h6 className='headline-5-small'>{data.gender}</h6>
                                     </div>
                                     <div className='col-4'>
-                                       <p className='product-price-p'> 2,000,000</p>
+                                       <p className='product-price-p'> {formatNumber(data.price)}₫ </p>
                                     </div>
                                 <div  className='col-12 mt-2 product-size'  >
-                                    <h3>Nike React Infinity Run Flyknit 2
+                                    <h3>{data.productName}
                                     </h3>
                                     <h5>Select Size</h5>
                                     <Button className='btn size' size='lg' variant="light">38</Button>
-                                    <Button className='btn size' size='lg' variant="light">38</Button>
-                                    <Button className='btn size' size='lg' variant="light">38</Button>
-                                    <Button className='btn size' size='lg' variant="light">38</Button>
-                                    <Button className='btn size' size='lg' variant="light">38</Button>
-                                    <Button className='btn size' size='lg' variant="light">38</Button>
-                                    <Button className='btn size' size='lg' variant="light">38</Button>
+                                    <Button className='btn size' size='lg' variant="light">39</Button>
+                                    <Button className='btn size' size='lg' variant="light">40</Button>
+                                    <Button className='btn size' size='lg' variant="light">41</Button>
+                                    <Button className='btn size' size='lg' variant="light">42</Button>
+                                    <Button className='btn size' size='lg' variant="light">43</Button>
+                                    <Button className='btn size' size='lg' variant="light">44</Button>
+                                    <Button className='btn size' size='lg' variant="light">45</Button>
                                     <div>
-                                        <Button className='add-black'>Add To Bag</Button>
+                                            <Button className='add-black' onClick={button===false ?addBag.bind(this,data):
+                                                cancelBag.bind(this,data)} disabled={load===true?true:false}>
+                                                {button===false ? 'Add To Bag' :'Cancel To Bag'}
+                                                {' '}
+                                            </Button>
                                     </div>
                                     <div>
                                         <Button className='add-white'>Favourite <i className="far fa-heart"></i></Button>
                                     </div>
 
                                 </div>
-
-
                             </Row>
                         </div>
                 </Row>
@@ -101,9 +144,22 @@ const Product = () => {
                            <h5 className='text-dark'>YOU MIGHT ALSO LIKE</h5>
                        </div>
                    </div>
-                   <SlideProduct slidesData={slidesData}/>
+                   <SlideProduct slidesData={dataScrollHome}/>
                </div>
            </div>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Woohoo, This product was added to cart before!!</Modal.Title>
+                </Modal.Header>
+                <Modal.Footer>
+                    <Button variant="danger" onClick={handleClose}>
+                        Check Bag
+                    </Button>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Close
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </>
     );
 };

@@ -16,7 +16,8 @@ import {brandNameList} from "variables/data";
 import Viewer from 'react-viewer';
 import NotificationAlert from "react-notification-alert";
 import {Link} from "react-router-dom";
-import {to_slug,formatNumber} from "views/to_slug";
+import {formatNumber} from "views/to_slug";
+import {SearchProduct} from 'components/Search'
 
 class ProductList extends React.Component {
 
@@ -70,7 +71,7 @@ class ProductList extends React.Component {
     this.setState({
       visible: 'visible',
       setVisible:true,
-      zIndex:'1',
+      zIndex:'3',
       image:image,
     })
     event.preventDefault()
@@ -164,17 +165,7 @@ class ProductList extends React.Component {
     currentPage = 1;
     var x =[]
     if (event.target.value.length >= 3) {
-
-      productList.map((prop) => {
-            if ( (to_slug(prop.productName )).indexOf(to_slug(event.target.value)) > -1 ){
-              x.push(prop)
-            }else if ((to_slug(prop.brandName )).indexOf(to_slug(event.target.value)) > -1 ) {
-              x.push(prop)
-            }
-            return null;
-      })
-
-
+     x = SearchProduct(event.target.value, productList, '')
     }
     if (event.target.value.length < 3){
       this.setState({
@@ -219,7 +210,7 @@ class ProductList extends React.Component {
                         <Input type='text' value={searchData} name='searchData'  onChange={this.searchData}  placeholder="Search..." />
                         <InputGroupAddon addonType="append">
                           <InputGroupText >
-                            <i className="now-ui-icons ui-1_zoom-bold" />
+                                <i className="now-ui-icons ui-1_zoom-bold" />
                           </InputGroupText>
                         </InputGroupAddon>
                       </InputGroup>
@@ -246,6 +237,7 @@ class ProductList extends React.Component {
                         <th>Product Name</th>
                         <th>Original Price</th>
                         <th>Price</th>
+                        <th>Gender</th>
                         <th>Image</th>
                         <th className="text-right"></th>
                     </tr>
@@ -258,6 +250,7 @@ class ProductList extends React.Component {
                               <td>{prop.productName}</td>
                               <td>{formatNumber(prop.originalPrice)}</td>
                               <td>{formatNumber(prop.price)}</td>
+                              <td>{prop.gender}</td>
                               <td >
                                 <img className='img-fluid rounded'
                                      src={prop.image}
