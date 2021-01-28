@@ -280,10 +280,10 @@ export default function () {
                                                         <Card.Body  >
                                                             <Form.Check
                                                                 custom
-                                                                type='checkbox'
+                                                                type='radio'
                                                                 id={`custom-gender-${prop}`}
                                                                 label={prop}
-                                                                name={prop}
+                                                                name='radio'
                                                                 onChange={handleChangeCheckbox}
                                                             />
                                                         </Card.Body>
@@ -315,10 +315,10 @@ export default function () {
                                                         <Card.Body onClick={handleClick1}>
                                                             <Form.Check
                                                                 custom
-                                                                type='checkbox'
+                                                                type='radio'
                                                                 id={`custom-kid-${index}`}
                                                                 label={prop}
-                                                                name={prop}
+                                                                name='radio'
                                                                 onChange={handleChangeCheckbox}
                                                             />
                                                         </Card.Body>
@@ -350,10 +350,10 @@ export default function () {
                                                     <Card.Body  >
                                                         <Form.Check
                                                             custom
-                                                            type='checkbox'
+                                                            type='radio'
                                                             id={`custom-brand-${index}`}
                                                             label={`${prop}`}
-                                                            name={prop}
+                                                            name='radio'
                                                             onChange={handleChangeCheckbox}
                                                         />
                                                     </Card.Body>
@@ -384,10 +384,10 @@ export default function () {
                                                             key={index}
                                                             inline
                                                             custom
-                                                            type='checkbox'
+                                                            type='radio'
                                                             id={`checkbox-size-${prop}`}
                                                             label={prop}
-                                                            name={prop}
+                                                            name='radio'
                                                             className='mb-2'
                                                             onChange={handleChangeCheckbox}
                                                         />
@@ -418,10 +418,10 @@ export default function () {
                                                     <Card.Body  >
                                                         <Form.Check
                                                             custom
-                                                            type='checkbox'
+                                                            type='radio'
                                                             id={`custom-feature-${index}`}
                                                             label={`${prop}`}
-                                                            name={prop}
+                                                            name='radio'
                                                             onChange={handleChangeCheckbox}
                                                         />
                                                     </Card.Body>
