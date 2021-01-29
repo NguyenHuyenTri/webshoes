@@ -5,15 +5,10 @@ import Kid from "views/Website/Kid/Kid";
 
 import Login from 'views/Login/Login';
 import Product from "views/Website/Product/Product";
-<<<<<<< HEAD
-import AllProducts from "../views/Website/Product/AllProducts";
-import Bag from 'views/Website/Bag/Bag';
-import Contact from 'views/Website/Contact/Contact'
-=======
 import AllProducts from "views/Website/Product/AllProducts";
 import Bag from 'views/Website/Bag/Bag'
-import Pay from "views/Website/Bag/Pay";
->>>>>>> 483ff5fafbccfdb7acaaf83cac1dd47d06efc3e4
+import Pay from 'views/Website/Bag/Pay'
+import Contact from 'views/Website/Contact/Contact'
 
 var dashRoutes = [
     //home
@@ -64,20 +59,19 @@ var dashRoutes = [
         path: "/bag",
         component: Bag,
     },
-<<<<<<< HEAD
     //page contact
     {
         layout: '/locfuho',
         path: "/contact",
         component: Contact,
-=======
+    },
     //page pay
     {
-        layout:'/locfuho',
+        layout: '/locfuho',
         path: "/pay",
         component: Pay,
->>>>>>> 483ff5fafbccfdb7acaaf83cac1dd47d06efc3e4
-    },
+
+    }
 ]
 
 export default dashRoutes;
