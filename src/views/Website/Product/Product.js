@@ -44,7 +44,6 @@ const Product = () => {
                 }
             }
     },[params,history,data,cart])
-    console.log(data)
     const  addBag = (data) =>{
 
         setLoad(true)
@@ -62,6 +61,7 @@ const Product = () => {
                 setTimeout(()=>{
                     setButton(true);
                     setLoad(false)
+
                 },1000)
                 localStorage.setItem('localBag',JSON.stringify(temp));
             }else {

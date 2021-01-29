@@ -8,10 +8,10 @@ import "static/assets/css/demo.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "static/assets/scss/now-ui-dashboard.scss?v1.4.0";
 
-// import Upgrade from "views/Upgrade.js";
 import AddProduct from "views/Admin/Product/AddProduct";
 import PageWoman from "../views/Admin/Page/Woman/PageWoman";
 import PageKid from "../views/Admin/Page/Kid/PageKid";
+import ListOrder from "../views/Admin/Order/ListOrder";
 
 
 var dashRoutes = [
@@ -42,7 +42,15 @@ var dashRoutes = [
     display:true,
     nav:false
   },
-
+  //order
+  {
+    path: "/order",
+    name: "Order",
+    icon: "shopping_delivery-fast",
+    component: ListOrder,
+    layout: "/admin",
+    display:true,
+  },
   {
     path: "/brandname",
     name: "Brand & Gender List",
@@ -93,5 +101,6 @@ var dashRoutes = [
     display:false,
     nav:false,
   },
+
 ];
 export default dashRoutes;

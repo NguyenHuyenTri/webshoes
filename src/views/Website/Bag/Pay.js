@@ -72,21 +72,21 @@ export default function Pay() {
         if (invalidChecked!==true&&invalidName!==true&&invalidAddress!==true&&invalidEmail!==true
             &&invalidLastName!==true&& invalidFirstName!==true&&invalidNumber!==true){
             let x = pay;
-            console.log('ok')
             let totall = total;
             if (total<5000000){
                 totall=total+300000
             }
-            console.log(fistsName)
             let tempPay = {
                 firstName:fistsName,
                 lastName:lastName,
                 total:totall,
                 email:email,
                 address:address,
+                bag:card,
             }
             x.unshift(tempPay)
 
+            localStorage.setItem('localBag',JSON.stringify([]))
             localStorage.setItem('localPay',JSON.stringify(x))
             setTimeout(()=>{
                 setLoad(false)
