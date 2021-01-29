@@ -22,9 +22,9 @@
     font-size: 20px;
     color: grey
 }
-
 .gift-input {
-    background: none
+    background: none;
+
 }
 
 #heading {
@@ -72,7 +72,9 @@
     font-weight: bold;
     letter-spacing: 1px
 }
-
+.form-card input.input-pay:focus{
+    background: none;
+}
 .form-card input:focus,
 .form-card textarea:focus {
     -moz-box-shadow: none !important;
@@ -82,7 +84,8 @@
     font-weight: bold;
     border-bottom: 1.5px solid skyblue;
     padding-bottom: 9.5px;
-    outline-width: 0
+    outline-width: 0;
+    background: #EDE7F6;
 }
 
 .form-card .btn-success {
@@ -154,3 +157,4 @@
     border-top: 3px solid #0091EA;
     transition: 0.3s
 }
+

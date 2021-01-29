@@ -7,7 +7,7 @@ import Sidebar from "components/Admin/Sidebar/Sidebar.js";
 import FixedPlugin from "components/Admin/FixedPlugin/FixedPlugin.js";
 import routes from "routes/routesAdmin";
 import Login from "views/Login/Login";
-import {userToken} from "../views/Login/useToken";
+import {userlogin, userToken} from "../views/Login/useToken";
 
 var ps;
 var backgroundColor =localStorage.getItem('backgroundColor');
@@ -27,21 +27,21 @@ class Dashboard extends React.Component {
   }
   mainPanel = React.createRef();
   componentDidMount() {
-        if (this.state.token)
+        if (this.state.token&&userlogin.length>0)
           if (navigator.platform.indexOf("Win") > -1) {
             ps = new PerfectScrollbar(this.mainPanel.current);
             document.body.classList.toggle("perfect-scrollbar-on");
           }
   }
   componentWillUnmount() {
-    if (this.state.token)
+    if (this.state.token&&userlogin.length>0)
       if (navigator.platform.indexOf("Win") > -1) {
         ps.destroy();
         document.body.classList.toggle("perfect-scrollbar-on");
     }
   }
   componentDidUpdate(e) {
-    if (this.state.token)
+    if (this.state.token&&userlogin.length>0)
     if (e.history.action === "PUSH") {
       document.documentElement.scrollTop = 0;
       document.scrollingElement.scrollTop = 0;
@@ -55,12 +55,13 @@ class Dashboard extends React.Component {
 
 
   render() {
-
       const {token}=this.state;
-
-      if (!token){
-         return <Login  />
+      if (token&&userlogin.role!=='admin'){
+         return <Redirect to='/locfuho/'/>
+      }else if (!token){
+        return <Login/>
       }
+
 
 
       return (

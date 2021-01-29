@@ -44,14 +44,21 @@ const Product = () => {
                 }
             }
     },[params,history,data,cart])
-
+    console.log(data)
     const  addBag = (data) =>{
 
         setLoad(true)
         if (data){
             let temp = cart ;
             if (temp.length===0){
-                temp.push(data )
+                let x = {
+                    brandName:data.brandName,
+                    productName:data.productName,
+                    image:data.image,
+                    price:data.price,
+                    amount:1,
+                }
+                temp.push(x)
                 setTimeout(()=>{
                     setButton(true);
                     setLoad(false)
@@ -62,7 +69,14 @@ const Product = () => {
                     setShow(true)
                     setTimeout(()=>{ setButton(false);setLoad(false)},1000)
                 }else {
-                    temp.unshift(data)
+                    let x = {
+                        brandName:data.brandName,
+                        productName:data.productName,
+                        image:data.image,
+                        price:data.price,
+                        amount:1,
+                    }
+                    temp.unshift(x)
                     setCard(temp);
                     setTimeout(()=>{ setButton(true);setLoad(false)},1000)
                     localStorage.setItem('localBag',JSON.stringify(temp));
