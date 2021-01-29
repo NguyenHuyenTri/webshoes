@@ -3,14 +3,14 @@ import Header from "components/Website/Header/Header";
 import Footer from "components/Website/Footer/Footer";
 import 'static/website/css/header.css'
 import routes from "routes/routesWebsite";
-import {Redirect, Route, Switch} from "react-router-dom";
-export default class Website extends Component{
 
+import {Redirect, Route, Switch} from "react-router-dom";
+
+export default class Website extends Component{
     render() {
         return(
             <>
-
-                <Header {...this.props}/>
+                <Header {...this.props} />
                 <div className='w-100 post-slide' >
                     <Switch>
                         {routes.map((prop, key) => {

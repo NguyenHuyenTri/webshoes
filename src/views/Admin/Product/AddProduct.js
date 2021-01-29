@@ -242,6 +242,7 @@ class AddProduct extends React.Component {
                 price:this.state.price,
                 image:this.state.image,
                 gender:this.state.genderName,
+                dataImage:[],
             }
             var productListAll = [];
             productListAll = productList;
@@ -321,6 +322,7 @@ class AddProduct extends React.Component {
                 price:this.state.price,
                 image:this.state.image,
                 gender:this.state.genderName,
+                dataImage:[],
             }
 
             var productListAll = [];

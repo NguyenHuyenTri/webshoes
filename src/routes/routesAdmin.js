@@ -42,7 +42,7 @@ var dashRoutes = [
     display:true,
     nav:false
   },
-    // brand and gender
+
   {
     path: "/brandname",
     name: "Brand & Gender List",
@@ -84,42 +84,6 @@ var dashRoutes = [
     layout: "/admin",
     display:true,
   },
-  // {
-  //   path: "/notifications",
-  //   name: "Notifications",
-  //   icon: "ui-1_bell-53",
-  //   component: Notifications,
-  //   layout: "/admin",
-  //   display:true,
-  //   nav:false,
-  // },
-  // {
-  //   path: "/user-page",
-  //   name: "User Profile",
-  //   icon: "users_single-02",
-  //   component: UserPage,
-  //   layout: "/admin",
-  //   display:true,
-  //   nav:false,
-  // },
-  // {
-  //   path: "/extended-tables",
-  //   name: "Table List",
-  //   icon: "files_paper",
-  //   component: TableList,
-  //   layout: "/admin",
-  //   display:true,
-  //   nav:false,
-  // },
-  // {
-  //   path: "/typography",
-  //   name: "Typography",
-  //   icon: "design-2_ruler-pencil",
-  //   component: Typography,
-  //   layout: "/admin",
-  //   display:true,
-  //   nav:false,
-  // },
   {
     path: "/update/:id",
     name: "Update",

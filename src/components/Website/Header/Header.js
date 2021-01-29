@@ -1,14 +1,17 @@
 import React from "react";
 import logo from 'static/img/core-img/logo4.png'
-import { Navbar, NavbarBrand, NavbarToggler,
+import {
+    Navbar, NavbarBrand, NavbarToggler,
     Collapse, Nav, NavItem, NavLink,
-    DropdownToggle, DropdownMenu, DropdownItem  ,Form ,ButtonDropdown} from 'reactstrap';
+    DropdownToggle, DropdownMenu, DropdownItem, Form, ButtonDropdown, Dropdown
+} from 'reactstrap';
 
 import 'static/website/classy-nav.css';
 import nike from 'static/img/brandName/nike.png'
 import adidas from 'static/img/brandName/adidas.png'
 import bitis from 'static/img/brandName/bitis.png'
 import {Link} from "react-router-dom";
+import {userMember} from "views/Login/useToken";
 
 import 'hover.css/css/hover.css'
 
@@ -21,12 +24,15 @@ export  default class Header extends React.Component {
         this.dropdownToggle = this.dropdownToggle.bind(this);
         this.state = {
             isOpen: false,
-            dropdownOpen: false
+            dropdownOpen: false,
+            isOpen1: false,
+            name:''
         };
     }
+
     toggle() {
         this.setState({
-            isOpen: !this.state.isOpen
+            isOpen: !this.state.isOpen,
         });
     }
     dropdownToggle(e){
@@ -34,6 +40,16 @@ export  default class Header extends React.Component {
             dropdownOpen: !this.state.dropdownOpen
         });
     }
+    componentDidMount() {
+        this.setState({name:userMember.name})
+    }
+
+    logout = (event) =>{
+        event.preventDefault()
+        localStorage.setItem('tokenLogin',null)
+        setTimeout(()=>{this.setState({name:''});window.location.reload()},1000)
+    }
+
        render() {
         const {isOpen} =this.state;
            return(
@@ -119,14 +135,35 @@ export  default class Header extends React.Component {
                                </NavItem>
                            </Nav>
                                     <Nav>
-                                        <NavItem className=''>
-                                            <Link to="/login" className="nav-link hvr-float-shadow">
-                                           <i style={{'fontSize':'15px'}} className="now-ui-icons users_single-02" />{' '}
-                                           <p>
-                                               <span className="d-lg-none d-md-block ">Account</span>
-                                           </p>
-                                            </Link>
-                                        </NavItem>
+                                        {userMember.length === 0 ?
+                                            <NavItem>
+
+                                                <Link to="/login" className="nav-link hvr-float-shadow">
+                                                    <i style={{'fontSize': '15px'}}
+                                                       className="now-ui-icons users_single-02"/>{' '}
+                                                    <p>
+                                                        <span className="d-lg-none d-md-block ">Account</span>
+                                                    </p>
+                                                </Link>
+
+
+                                            </NavItem> :
+                                            <Dropdown
+                                                nav
+                                                isOpen={this.state.isOpen1}
+                                                toggle={() => this.setState({isOpen1: !this.state.isOpen1})}
+                                            >
+                                                <DropdownToggle caret nav>
+                                                    <i className="now-ui-icons users_circle-08"/> {' '}
+                                                    <p>
+                                                        <span>{userMember.name}</span>
+                                                    </p>
+                                                </DropdownToggle>
+                                                <DropdownMenu right>
+                                                    <DropdownItem onClick={this.logout} tag="a">Logout</DropdownItem>
+                                                </DropdownMenu>
+                                            </Dropdown>
+                                        }
                                     </Nav>
                        </Collapse>
                    </Navbar>

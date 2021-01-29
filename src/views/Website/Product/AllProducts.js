@@ -5,9 +5,10 @@ import {Button, Dropdown, DropdownButton, Form, Navbar, Row,Card,Accordion}
 import {brandNameList} from "variables/data";
 import DataProduct from "./DataProduct";
 import {useParams,useHistory} from "react-router";
-import {SearchProduct} from 'components/Search'
+import {SearchProduct,SearchMany} from 'components/Search'
 import {productList} from "variables/product";
-import {sortPrice} from 'views/to_slug'
+import {sortPrice} from 'views/to_slug';
+
 const styleCss ={
     position:'fixed',
     width:'100%',
@@ -17,7 +18,6 @@ const styleCss ={
     top:0,
     transition: 'all 1s ease',
 }
-
 export default function () {
 
 
@@ -29,21 +29,17 @@ export default function () {
 
     const [isOpen1, setOpen1] = useState(true);
     const [isOpen2, setOpen2] = useState(true);
-    const [isOpen3, setOpen3] = useState(true);
     const [isOpen4, setOpen4] = useState(true);
-    const [isOpen5, setOpen5] = useState(true);
     const toggleItemM1 = () => setOpen1(!isOpen1);
     const toggleItemM2 = () => setOpen2(!isOpen2);
-    const toggleItemM3 = () => setOpen3(!isOpen3);
     const toggleItemM4 = () => setOpen4(!isOpen4);
-    const toggleItemM5 = () => setOpen5(!isOpen5);
+
 
     const [checked1, setChecked1] = useState(false)
     const handleClick1 = () => setChecked1(!checked1)
 
-    const gender =["Men's","Woman"]
+    const gender =["All","Men's","Woman"]
     const kid = ["Boys","Girls"]
-    const feature = ['Nike Air Max ','Hunter' ,'UltraBoost','Superstar']
     const size =[]
     for (let i=28; i <=45 ; i++){
         size.push(i);
@@ -69,7 +65,7 @@ export default function () {
                temp= data.slice(0,number);
                setDataToShow(temp)
                setLoad(false)
-           },2000)
+           },500)
         }
     }
 
@@ -136,84 +132,46 @@ export default function () {
 
 
 
-    // const arr =useState([])
-    const [arrValue,setArrValue]=useState([])
-    const [cbBrand,setCbBand] =useState([])
 
+    const [search,setSearch]=useState(['',''])
 
     const handleChangeCheckbox = (event) =>{
 
         const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const value = target.type === 'checked' ? target.checked : target.value;
         const name = target.name;
 
-        let arr = [name,value];
-        let tempValue=arrValue;
-        let tempBrand = cbBrand;
         let tempShow =[]
         let tempData = []
+
         setLoad(true)
-        if (arr[1]===true){
-            if (brandNameList.indexOf(arr[0])>-1) {
-                tempBrand.push(arr[0])
-                setCbBand(tempBrand)
+
+        let arr = [name,value];
+        let tempSearch = search;
+
+        if (arr[0]==='radio-gender'){
+            if (arr[1]==='All'){
+                tempSearch[0]='';
             }else {
-                tempValue.push(arr[0]);
-                setArrValue(tempValue)
+                tempSearch[0]=(arr[1]);
             }
+            setSearch(tempSearch);
+        }else  if (arr[0]==='radio-brandName'){
+            tempSearch[1]=arr[1];
+            setSearch(tempSearch);
+        }
+
+        let dataSearch = []
+        if (params.value==='all'){
+            dataSearch=productList;
         }else {
-            if (brandNameList.indexOf(arr[0])>-1) {
-                tempBrand.splice(tempBrand.indexOf(arr[0]),1)
-                setArrValue(tempBrand)
-            }else {
-                tempValue.splice(arrValue.indexOf(arr[0]),1)
-                setArrValue(tempValue)
-            }
+            dataSearch = SearchProduct(params.value ,productList ,'gender')
         }
-
-        if (tempBrand.length>0){
-
-            tempData=[];
-            tempBrand.map((props=>{
-                if (SearchProduct(props,data,'brandName').length>0){
-                    let x = SearchProduct(props,data,'brandName')
-                    Array.prototype.push.apply(tempData,x)
-                }
-                return tempData
-            }))
-            if (tempValue.length>0){
-                tempValue.map((props)=>{
-                    if (SearchProduct(props,tempData,'gender').length>0){
-                        let x = SearchProduct(props,tempData,'gender');
-                        tempData=[];
-                        Array.prototype.push.apply(tempData,x)
-                    }
-                    return tempData
-                })
-            }
-        }else
-        if(tempValue.length>0&&tempBrand.length===0){
-            tempData=[];
-            tempValue.map((props)=>{
-                if (SearchProduct(props,data,'gender').length>0){
-                    let x = SearchProduct(props,data,'gender')
-                    Array.prototype.push.apply(tempData,x)
-                }
-                return null
-            })
-        }else
-        if (tempValue.length===0&&tempBrand.length===0){
-            fetchBusinesses()
-        }
-        console.log(tempData)
-
-
-        if (tempData.length>0&&tempShow.length===0){
-              tempShow = tempData.slice(0,numberProduct);
-              setData(tempData)
-              setDataToShow(tempShow)
-        }
-        setTimeout(()=>setLoad(false),1000)
+        tempData = SearchMany(search[1],search[0],dataSearch)
+        setData(tempData)
+        tempShow = tempData.slice(0,numberProduct)
+        setDataToShow(tempShow)
+        setTimeout(()=>setLoad(false),500)
     }
 
     return(
@@ -283,7 +241,8 @@ export default function () {
                                                                 type='radio'
                                                                 id={`custom-gender-${prop}`}
                                                                 label={prop}
-                                                                name='radio'
+                                                                name='radio-gender'
+                                                                value={prop}
                                                                 onChange={handleChangeCheckbox}
                                                             />
                                                         </Card.Body>
@@ -318,7 +277,8 @@ export default function () {
                                                                 type='radio'
                                                                 id={`custom-kid-${index}`}
                                                                 label={prop}
-                                                                name='radio'
+                                                                value={prop}
+                                                                name='radio-gender'
                                                                 onChange={handleChangeCheckbox}
                                                             />
                                                         </Card.Body>
@@ -343,7 +303,6 @@ export default function () {
                                                 </div>
                                             </Row>
                                         </Accordion.Toggle>
-
                                         {brandNameList.map((prop ,index)=>{
                                             return(
                                                 <Accordion.Collapse key={index} className={isOpen4===false?'':'show'}  >
@@ -353,7 +312,8 @@ export default function () {
                                                             type='radio'
                                                             id={`custom-brand-${index}`}
                                                             label={`${prop}`}
-                                                            name='radio'
+                                                            name='radio-brandName'
+                                                            value={prop}
                                                             onChange={handleChangeCheckbox}
                                                         />
                                                     </Card.Body>
@@ -361,74 +321,7 @@ export default function () {
                                             );
                                         })}
                                     </Accordion>
-                                    <Accordion  >
-                                        <Accordion.Toggle   as={Card.Header}   >
-                                            <Row onClick={toggleItemM3}>
-                                                <div className='col-8 col-lg-9' style={{'margin':'left'}}>
-                                                    Size
-                                                </div>
 
-                                                <div className='col-4 col-lg-3' style={{'margin':'right'}}>
-                                                    {isOpen3===false ?
-                                                        <i className="now-ui-icons arrows-1_minimal-down"></i>:
-                                                        <i  className="now-ui-icons arrows-1_minimal-up"></i>
-                                                    }
-                                                </div>
-                                            </Row>
-                                        </Accordion.Toggle>
-                                        <Accordion.Collapse className={isOpen3===false?'':'show'}  >
-                                            <Card.Body   >
-                                                {size.map((prop, index) =>{
-                                                    return(
-                                                        <Form.Check
-                                                            key={index}
-                                                            inline
-                                                            custom
-                                                            type='radio'
-                                                            id={`checkbox-size-${prop}`}
-                                                            label={prop}
-                                                            name='radio'
-                                                            className='mb-2'
-                                                            onChange={handleChangeCheckbox}
-                                                        />
-                                                    )
-                                                })}
-                                            </Card.Body>
-                                        </Accordion.Collapse>
-                                    </Accordion>
-                                    <Accordion  >
-                                        <Accordion.Toggle  as={Card.Header}  >
-                                            <Row onClick={toggleItemM5}>
-                                                <div className='col-8 col-lg-9' style={{'margin':'left'}}>
-                                                    Featured
-                                                </div>
-
-                                                <div className='col-4 col-lg-3' style={{'margin':'right'}}>
-                                                    {isOpen5===false ?
-                                                        <i className="now-ui-icons arrows-1_minimal-down"></i>:
-                                                        <i  className="now-ui-icons arrows-1_minimal-up"></i>
-                                                    }
-                                                </div>
-                                            </Row>
-                                        </Accordion.Toggle>
-
-                                        {feature.map((prop ,index)=>{
-                                            return(
-                                                <Accordion.Collapse key={index} className={isOpen5===false?'':'show'}  >
-                                                    <Card.Body  >
-                                                        <Form.Check
-                                                            custom
-                                                            type='radio'
-                                                            id={`custom-feature-${index}`}
-                                                            label={`${prop}`}
-                                                            name='radio'
-                                                            onChange={handleChangeCheckbox}
-                                                        />
-                                                    </Card.Body>
-                                                </Accordion.Collapse>
-                                            );
-                                        })}
-                                    </Accordion>
                                 </Form>
                             </div>
                             <div style={{width : status ===true ?'83%':'100%'}} className='product-right mb-3 '>
@@ -441,8 +334,9 @@ export default function () {
 
                                 <div style={{display:dataToShow.length>=data.length? 'none':'block'}}   className='moreShow text-center ' >
                                     <button  style={{'width':'150px'}}
+                                             disabled={load===true?true:false}
                                              className="more-black hvr-float-shadow"
-                                             disabled={load===true?true:false} onClick={loadProduct}>
+                                              onClick={loadProduct}>
                                         MORE
                                     </button>
                                 </div>

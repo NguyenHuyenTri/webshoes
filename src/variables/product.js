@@ -10,6 +10,7 @@ if (localProduct!=null){
 
 if (localProduct==null){
     productList=[
+        //1
         {
             brandName: "Biti's",
             productName: "Hunter X Festive Aurora",
@@ -25,105 +26,6 @@ if (localProduct==null){
             ]
         },
         {
-            brandName: "Biti's",
-            productName: "Hunter X Festive Electric Love",
-            originalPrice: "929000",
-            price: "929000",
-            image: link['bitis-festive-electric-love.jpg'],
-            gender:"Woman Shoes",
-            dataImage:[
-                src['02-bitis-hunter-aurora-1.jpg'],
-                src['02-bitis-hunter-aurora-2.jpg'],
-                src['02-bitis-hunter-aurora-3.jpg'],
-                src['02-bitis-hunter-aurora-4.jpg'],
-            ]
-        },
-        {
-            brandName: "Biti's",
-            productName: "Hunter Core Festive Breezer",
-            originalPrice: "800000",
-            price: "899000",
-            image: link['bitis-festive-breezer.jpg'],
-            gender:"Kid's Boys Shoes",
-            dataImage:[
-                src['03-bitis-hunter-festive-beezer-1.jpg'],
-                src['03-bitis-hunter-festive-beezer-2.jpg'],
-                src['03-bitis-hunter-festive-beezer-3.jpg'],
-                src['03-bitis-hunter-festive-beezer-4.jpg'],
-            ]
-        },
-        {
-            brandName: "Biti's",
-            productName: "Hunter Core Festive Snowflake",
-            originalPrice: "1900000",
-            price: "2000000",
-            image: link['bitis-festive-snowflake.jpg'],
-            gender:"Kid's Boys Shoes",
-            dataImage:[
-                src['04-bitis-festive-snowflake-1.jpg'],
-                src['04-bitis-festive-snowflake-2.jpg'],
-                src['04-bitis-festive-snowflake-3.jpg'],
-                src['04-bitis-festive-snowflake-4.jpg'],
-            ]
-        },
-        {
-            brandName: "Biti's",
-            productName: "Hunter Core Festive Washed",
-            originalPrice: "800000",
-            price: "899000",
-            image: link['bitis-washed.jpg'],
-            gender:"Kid's Girls Shoes",
-            dataImage:[
-                src['05-bitis-washed-1.jpg'],
-                src['05-bitis-washed-2.jpg'],
-                src['05-bitis-washed-3.jpg'],
-                src['05-bitis-washed-4.jpg'],
-            ]
-        },
-        {
-            brandName: "Biti's",
-            productName: "Hunter Nameless Edition",
-            originalPrice: "1900000",
-            price: "2000000",
-            image: link['bitis-edition.jpg'],
-            gender:"Kid's Girls Shoes",
-            dataImage:[
-                src['06-bitis-edition-1.jpg'],
-                src['06-bitis-edition-2.jpg'],
-                src['06-bitis-edition-3.jpg'],
-                src['06-bitis-edition-4.jpg'],
-            ]
-        },
-        {
-            brandName: "Biti's",
-            productName: "Hunter X Grey Festive Washed",
-            originalPrice: "929000",
-            price: "929000",
-            image: link['bitis-grey-festive-washed.jpg'],
-            gender:"Men's Shoes",
-            dataImage:[
-                src['07-bitis-grey-festive-washed-1.jpg'],
-                src['07-bitis-grey-festive-washed-2.jpg'],
-                src['07-bitis-grey-festive-washed-3.jpg'],
-                src['07-bitis-grey-festive-washed-4.jpg'],
-            ]
-        },
-        {
-            brandName: "Biti's",
-            productName: "Hunter X Festive Spice Pumpkin",
-            originalPrice: "929000",
-            price: "929000",
-            image: link['bitis-festive-spice-pumpkin.jpg'],
-            gender:"Men's Shoes",
-            dataImage:[
-                src['08-bitis-festive-spice-pumpkin-1.jpg'],
-                src['08-bitis-festive-spice-pumpkin-2.jpg'],
-                src['08-bitis-festive-spice-pumpkin-3.jpg'],
-                src['08-bitis-festive-spice-pumpkin-4.jpg'],
-            ]
-        },
-        //nike
-        {
             brandName: "Nike",
             productName: "Nike Court Air Zoom",
             originalPrice: "4409000",
@@ -135,6 +37,35 @@ if (localProduct==null){
                 src['09-nike-counrt-air-zoom-2.jpg'],
                 src['09-nike-counrt-air-zoom-3.jpg'],
                 src['09-nike-counrt-air-zoom-4.jpg'],
+            ]
+        },
+        {
+            brandName: "Adidas",
+            productName: "Adidas Downshifter",
+            originalPrice: "2200000",
+            price: "2400000",
+            image: link['adidas-downshifter.jpg'],
+            gender:"Kid's Girls Shoes",
+            dataImage:[
+                src['17-adidas-downshifter-1.jpg'],
+                src['17-adidas-downshifter-2.jpg'],
+                src['17-adidas-downshifter-3.jpg'],
+                src['17-adidas-downshifter-4.jpg'],
+            ]
+        },
+        //2
+        {
+            brandName: "Biti's",
+            productName: "Hunter X Festive Electric Love",
+            originalPrice: "929000",
+            price: "929000",
+            image: link['bitis-festive-electric-love.jpg'],
+            gender:"Woman Shoes",
+            dataImage:[
+                src['02-bitis-hunter-aurora-1.jpg'],
+                src['02-bitis-hunter-aurora-2.jpg'],
+                src['02-bitis-hunter-aurora-3.jpg'],
+                src['02-bitis-hunter-aurora-4.jpg'],
             ]
         },
         {
@@ -152,6 +83,34 @@ if (localProduct==null){
             ]
         },
         {
+            brandName: "Adidas",
+            productName: "Adidas Revolution 5",
+            originalPrice: "2200000",
+            price: "2400000",
+            image: link['adidas-revolution-5-flyease.jpg'],
+            gender:"Kid's Girls Shoes",
+            dataImage:[
+                src['19-adidas-revolution-5-flyease-1.jpg'],
+                src['19-adidas-revolution-5-flyease-2.jpg'],
+                src['19-adidas-revolution-5-flyease-3.jpg'],
+            ]
+        },
+        //3
+        {
+            brandName: "Biti's",
+            productName: "Hunter Core Festive Breezer",
+            originalPrice: "800000",
+            price: "899000",
+            image: link['bitis-festive-breezer.jpg'],
+            gender:"Kid's Boys Shoes",
+            dataImage:[
+                src['03-bitis-hunter-festive-beezer-1.jpg'],
+                src['03-bitis-hunter-festive-beezer-2.jpg'],
+                src['03-bitis-hunter-festive-beezer-3.jpg'],
+                src['03-bitis-hunter-festive-beezer-4.jpg'],
+            ]
+        },
+        {
             brandName: "Nike",
             productName: "Nike Court Lite ",
             originalPrice: "4109000",
@@ -163,105 +122,6 @@ if (localProduct==null){
                 src['11-nike-court-lite-2.jpg'],
                 src['11-nike-court-lite-3.jpg'],
                 src['11-nike-court-lite-4.jpg'],
-            ]
-        },
-        {
-            brandName: "Nike",
-            productName: "Nike Air Force",
-            originalPrice: "3509000",
-            price: "3509000",
-            image: link['nike-air-force.jpg'],
-            gender:'Woman Shoes',
-            dataImage:[
-                src['12-nike-air-force-1.jpg'],
-                src['12-nike-air-force-1.jpg'],
-                src['12-nike-air-force-1.jpg'],
-                src['12-nike-air-force-1.jpg'],
-            ]
-
-        },
-        {
-            brandName: "Nike",
-            productName: "Nike Air VaporMax",
-            originalPrice: "5000000",
-            price: "5000000",
-            image: link['nike-air-vapormax.jpg'],
-            gender:"Men's Shoes",
-            dataImage:[
-                src['13-air-vapormax.jpg'],
-                src['13-nike-air-vapormax-2.jpg.jpg'],
-                src['13-nike-air-vapormax-3.jpg.jpg'],
-                src['13-nike-air-vapormax-4.jpg.jpg'],
-            ]
-        },
-        {
-            brandName: "Nike",
-            productName: "Nike SB Zoom Blazer",
-            originalPrice: "6000000",
-            price: "6000000",
-            image:link['nike-sb-zoom-blazer.jpg'] ,
-            gender:"Men's Shoes",
-            dataImage:[
-                src['14-nike-sb-zoom-blazer-1.jpg'],
-                src['14-nike-sb-zoom-blazer-2.jpg'],
-                src['14-nike-sb-zoom-blazer-3.jpg'],
-                src['14-nike-sb-zoom-blazer-4.jpg'],
-            ]
-        },
-        {
-            brandName: "Nike",
-            productName: "Nike Kill Short",
-            originalPrice: "6459000",
-            price: "6459000",
-            image: link['nike-killshot.jpg'],
-            gender:"Kid's Girls Shoes",
-            dataImage:[
-                src['15-nike-killshot-1.jpg'],
-                src['15-nike-killshot-2.jpg'],
-                src['15-nike-killshot-3.jpg'],
-                src['15-nike-killshot-4.jpg'],
-            ]
-        },
-        {
-            brandName: "Nike",
-            productName: "Nike Lebron 18 ",
-            originalPrice: "4699000",
-            price: "4699000",
-            image: link['nike-lebron-18.jpg'],
-            gender:"Kid's Girls Shoes",
-            dataImage:[
-                src['16-lebron-18-1.jpg'],
-                src['16-lebron-18-2.jpg'],
-                src['16-lebron-18-3.jpg'],
-                src['16-lebron-18-4.jpg'],
-            ]
-        },
-        //adidas
-        {
-            brandName: "Adidas",
-            productName: "Adidas Downshifter",
-            originalPrice: "2200000",
-            price: "2400000",
-            image: link['adidas-downshifter.jpg'],
-            gender:"Kid's Girls Shoes",
-            dataImage:[
-                src['17-adidas-downshifter-1.jpg'],
-                src['17-adidas-downshifter-2.jpg'],
-                src['17-adidas-downshifter-3.jpg'],
-                src['17-adidas-downshifter-4.jpg'],
-            ]
-        },
-        {
-            brandName: "Adidas",
-            productName: "Adidas Revolution 5",
-            originalPrice: "2200000",
-            price: "2400000",
-            image: link['adidas-revolution-5-flyease.jpg'],
-            gender:"Kid's Girls Shoes",
-            dataImage:[
-                src['19-adidas-revolution-5-flyease-1.jpg'],
-                src['19-adidas-revolution-5-flyease-2.jpg'],
-                src['19-adidas-revolution-5-flyease-3.jpg'],
             ]
         },
         {
@@ -278,6 +138,35 @@ if (localProduct==null){
                 src['18-adidas-wio-7-4.jpg'],
             ]
         },
+        //4
+        {
+            brandName: "Biti's",
+            productName: "Hunter Core Festive Snowflake",
+            originalPrice: "1900000",
+            price: "2000000",
+            image: link['bitis-festive-snowflake.jpg'],
+            gender:"Kid's Boys Shoes",
+            dataImage:[
+                src['04-bitis-festive-snowflake-1.jpg'],
+                src['04-bitis-festive-snowflake-2.jpg'],
+                src['04-bitis-festive-snowflake-3.jpg'],
+                src['04-bitis-festive-snowflake-4.jpg'],
+            ]
+        },
+        {
+            brandName: "Nike",
+            productName: "Nike Air Force",
+            originalPrice: "3509000",
+            price: "3509000",
+            image: link['nike-air-force.jpg'],
+            gender:'Woman Shoes',
+            dataImage:[
+                src['12-nike-air-force-1.jpg'],
+                src['12-nike-air-force-1.jpg'],
+                src['12-nike-air-force-1.jpg'],
+                src['12-nike-air-force-1.jpg'],
+            ]
+        },
         {
             brandName: "Adidas",
             productName: "Adidas Wio Running",
@@ -292,6 +181,35 @@ if (localProduct==null){
                 src['22-adidas-wio-running-4.jpg'],
             ]
         },
+        //5
+        {
+            brandName: "Biti's",
+            productName: "Hunter Core Festive Washed",
+            originalPrice: "800000",
+            price: "899000",
+            image: link['bitis-washed.jpg'],
+            gender:"Kid's Girls Shoes",
+            dataImage:[
+                src['05-bitis-washed-1.jpg'],
+                src['05-bitis-washed-2.jpg'],
+                src['05-bitis-washed-3.jpg'],
+                src['05-bitis-washed-4.jpg'],
+            ]
+        },
+        {
+            brandName: "Nike",
+            productName: "Nike Air VaporMax",
+            originalPrice: "5000000",
+            price: "5000000",
+            image: link['nike-air-vapormax.jpg'],
+            gender:"Men's Shoes",
+            dataImage:[
+                src['13-air-vapormax.jpg'],
+                src['13-nike-air-vapormax-2.jpg.jpg'],
+                src['13-nike-air-vapormax-3.jpg.jpg'],
+                src['13-nike-air-vapormax-4.jpg.jpg'],
+            ]
+        },
         {
             brandName: "Adidas",
             productName: "Adidas Zoom Pegasus",
@@ -303,6 +221,93 @@ if (localProduct==null){
                 src['20-air-zoom-pegasus-1.jpg'],
                 src['20-air-zoom-pegasus-2.jpg'],
                 src['20-air-zoom-pegasus--3.jpg'],
+            ]
+        },
+        //6
+        {
+            brandName: "Biti's",
+            productName: "Hunter Nameless Edition",
+            originalPrice: "1900000",
+            price: "2000000",
+            image: link['bitis-edition.jpg'],
+            gender:"Kid's Girls Shoes",
+            dataImage:[
+                src['06-bitis-edition-1.jpg'],
+                src['06-bitis-edition-2.jpg'],
+                src['06-bitis-edition-3.jpg'],
+                src['06-bitis-edition-4.jpg'],
+            ]
+        },
+        {
+            brandName: "Nike",
+            productName: "Nike SB Zoom Blazer",
+            originalPrice: "6000000",
+            price: "6000000",
+            image:link['nike-sb-zoom-blazer.jpg'] ,
+            gender:"Men's Shoes",
+            dataImage:[
+                src['14-nike-sb-zoom-blazer-1.jpg'],
+                src['14-nike-sb-zoom-blazer-2.jpg'],
+                src['14-nike-sb-zoom-blazer-3.jpg'],
+                src['14-nike-sb-zoom-blazer-4.jpg'],
+            ]
+        },
+        //7
+        {
+            brandName: "Biti's",
+            productName: "Hunter X Grey Festive Washed",
+            originalPrice: "929000",
+            price: "929000",
+            image: link['bitis-grey-festive-washed.jpg'],
+            gender:"Men's Shoes",
+            dataImage:[
+                src['07-bitis-grey-festive-washed-1.jpg'],
+                src['07-bitis-grey-festive-washed-2.jpg'],
+                src['07-bitis-grey-festive-washed-3.jpg'],
+                src['07-bitis-grey-festive-washed-4.jpg'],
+            ]
+        },
+        {
+            brandName: "Nike",
+            productName: "Nike Kill Short",
+            originalPrice: "6459000",
+            price: "6459000",
+            image: link['nike-killshot.jpg'],
+            gender:"Kid's Girls Shoes",
+            dataImage:[
+                src['15-nike-killshot-1.jpg'],
+                src['15-nike-killshot-2.jpg'],
+                src['15-nike-killshot-3.jpg'],
+                src['15-nike-killshot-4.jpg'],
+            ]
+        },
+        //8
+        {
+            brandName: "Biti's",
+            productName: "Hunter X Festive Spice Pumpkin",
+            originalPrice: "929000",
+            price: "929000",
+            image: link['bitis-festive-spice-pumpkin.jpg'],
+            gender:"Men's Shoes",
+            dataImage:[
+                src['08-bitis-festive-spice-pumpkin-1.jpg'],
+                src['08-bitis-festive-spice-pumpkin-2.jpg'],
+                src['08-bitis-festive-spice-pumpkin-3.jpg'],
+                src['08-bitis-festive-spice-pumpkin-4.jpg'],
+            ]
+        },
+        {
+            brandName: "Nike",
+            productName: "Nike Lebron 18 ",
+            originalPrice: "4699000",
+            price: "4699000",
+            image: link['nike-lebron-18.jpg'],
+            gender:"Kid's Girls Shoes",
+            dataImage:[
+                src['16-lebron-18-1.jpg'],
+                src['16-lebron-18-2.jpg'],
+                src['16-lebron-18-3.jpg'],
+                src['16-lebron-18-4.jpg'],
             ]
         },
         {
