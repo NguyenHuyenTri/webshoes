@@ -3,31 +3,37 @@ import PanelHeader from "components/Admin/PanelHeader/PanelHeader";
 import {Button, Card, CardBody, CardHeader, CardTitle, Col, Row, Table} from "reactstrap";
 import Accordion from "react-bootstrap/Accordion";
 import {pay} from "variables/paybag";
+import {dataContact} from "variables/contact";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEye, faTrash} from "@fortawesome/free-solid-svg-icons";
 import Modal from "react-bootstrap/Modal";
 
-console.log(pay)
-export default function ListOrder() {
+export default function ListContact() {
 
-    const [payList]=useState(pay)
+    const [contactList]=useState(dataContact)
     const [show, setShow] = useState(false);
-    const [bag,setBag]=useState([]);
+    const [contactDetail,setContactDetail]=useState([]);
+    
     const viewOrder = (data,event) =>{
-        setShow(true)
-        let x = data;
-        setBag(x);
-        event.preventDefault()
+        setShow(true);
+        let dataObj = dataContact[data];
+        let x = []
+        x.push(dataObj);
+        setContactDetail(x);
+        event.preventDefault();
+        if(dataObj.isStatus == "false"){
+          dataObj.isStatus = "true";
+          console.log(dataContact);
+          localStorage.setItem('localContact',JSON.stringify(dataContact));
+        }
     }
-
-    console.log(bag)
-
+    
     return(
         <>
             <PanelHeader
                 content={
                     <div className="header text-center">
-                        <h2 className="title">List Order</h2>
+                        <h2 className="title">List Contact</h2>
                     </div>
                 }
             />
@@ -49,28 +55,26 @@ export default function ListOrder() {
                                             <thead className="text-primary">
                                             <tr className='text-center'>
                                                 <th>#</th>
-                                                <th>First Name</th>
-                                                <th>Last Name</th>
+                                                <th>Full Name</th>
                                                 <th>Email</th>
-                                                <th>Address</th>
-                                                <th>Total</th>
+                                                <th>Phone</th>
+                                                <th>Title</th>
                                                 <th>Details</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            {payList.map((props,index)=>{
+                                            {contactList.map((props,index)=>{
                                                 return(
                                                     <tr key={index} className='text-center'>
                                                         <td >{index}</td>
-                                                        <td >{props.firstName}</td>
-                                                        <td >{props.lastName}</td>
+                                                        <td >{props.fullName}</td>
                                                         <td >{props.email}</td>
-                                                        <td >{props.address}</td>
-                                                        <td >{props.total}</td>
+                                                        <td >{props.phone}</td>
+                                                        <td >{props.title}</td>
                                                         <td className="text-right" width='150px'>
                                                             <Button size='sm' outline color="danger"
                                                                     className='mb-1 mb-lg-0'
-                                                                    onClick={viewOrder.bind(this,props.bag)}
+                                                                    onClick={viewOrder.bind(this,index)}
                                                             >
                                                                 <FontAwesomeIcon  icon={faEye}/>
                                                             </Button>{' '}
@@ -104,35 +108,33 @@ export default function ListOrder() {
                 </Modal.Header>
                 <Modal.Body>
                     <Table responsive hover>
-                        <thead className="text-primary">
-                        <tr className='text-center'>
-                            <th>#</th>
-                            <th>Brand Name</th>
-                            <th>Product Name</th>
-                            <th>Price</th>
-                            <th>Amout</th>
-                            <th>Image</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {bag.map((props,index)=>{
+                        {contactDetail.map((props,index)=>{
                             return(
-                                <tr key={index} className='text-center'>
-                                    <td >{index}</td>
-                                    <td >{props.brandName}</td>
-                                    <td >{props.productName}</td>
-                                    <td >{props.price}</td>
-                                    <td>{props.amount}</td>
-                                    <td >
-                                        <img className='img-fluid rounded'
-                                             src={props.image}
-                                             alt="..." width='100px'
-                                             height='100px'/>
-                                    </td>
+                              <tbody key={index}>
+                                <tr>
+                                  <th>Full Name</th>
+                                  <td >{props.fullName}</td>
                                 </tr>
+                                <tr> 
+                                  <th>Email</th>
+                                  <td >{props.email}</td>
+                                </tr>
+                                <tr>
+                                <th>Phone</th>
+                                  <td >{props.phone}</td>
+                                </tr>
+                                <tr>
+                                <th>Title</th>
+                                  <td>{props.title}</td>
+                                </tr>
+                                <tr>
+                                <th>Content</th>
+                                  <td>{props.content}</td>
+                                </tr>
+                              </tbody>
                             )
                         })}
-                        </tbody>
+                        
                     </Table>
                 </Modal.Body>
                 <Modal.Footer>

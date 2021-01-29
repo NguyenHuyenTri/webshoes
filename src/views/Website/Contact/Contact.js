@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import 'static/website/css/contact/contact.css'
 import NotificationAlert from "react-notification-alert";
 import { Row, Col, Form, Button, } from "react-bootstrap";
-
+import {dataContact} from "variables/contact";
 export default function Contact() {
   const notificationAlert =useRef(null);
   const Alert = (status,message) =>{
@@ -36,14 +36,7 @@ export default function Contact() {
   });
   // lưu data
   const onSubmit = data => {
-    let dataContact = [];
-    let localContact = localStorage.getItem('localContact');
-    if(localContact!=null){
-      dataContact = JSON.parse(localContact);
       dataContact.push(data);
-    }else{
-      dataContact.push(data);
-    }
      localStorage.setItem('localContact',JSON.stringify(dataContact));
      Alert("","Sen to admin success");
   };
