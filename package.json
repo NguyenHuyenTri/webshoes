@@ -25,6 +25,7 @@
     "react-collapsible": "^2.8.1",
     "react-dom": "16.13.1",
     "react-google-maps": "9.4.5",
+    "react-hook-form": "^6.14.2",
     "react-id-swiper": "^4.0.0",
     "react-notification-alert": "0.0.12",
     "react-router": "5.2.0",

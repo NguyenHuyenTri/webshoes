@@ -3,59 +3,66 @@ import Men from "views/Website/Men/Men";
 import Woman from "views/Website/Woman/Woman";
 import Kid from "views/Website/Kid/Kid";
 
-import Login from 'views/Login/Login'
+import Login from 'views/Login/Login';
 import Product from "views/Website/Product/Product";
 import AllProducts from "../views/Website/Product/AllProducts";
-import Bag from 'views/Website/Bag/Bag'
+import Bag from 'views/Website/Bag/Bag';
+import Contact from 'views/Website/Contact/Contact'
 
 var dashRoutes = [
     //home
     {
-        layout:'/locfuho',
+        layout: '/locfuho',
         path: "/ ",
         component: Home,
     },
     // page men , woman / kid product
     {
-        layout:'/locfuho',
+        layout: '/locfuho',
         path: "/:value/product",
         component: AllProducts,
     },
     // page product
     {
-        layout:'/locfuho',
+        layout: '/locfuho',
         path: "/product/:value",
         component: Product,
     },
     //page men
     {
-        layout:'/locfuho',
+        layout: '/locfuho',
         path: "/men",
         component: Men,
     },
     //page woman
     {
-        layout:'/locfuho',
+        layout: '/locfuho',
         path: "/woman",
         component: Woman,
     },
     //page kid
     {
-        layout:'/locfuho',
+        layout: '/locfuho',
         path: "/kid",
         component: Kid,
     },
     //page login
     {
-        layout:'/locfuho',
+        layout: '/locfuho',
         path: "/login",
         component: Login,
     },
     //page bag
     {
-        layout:'/locfuho',
+        layout: '/locfuho',
         path: "/bag",
         component: Bag,
+    },
+    //page contact
+    {
+        layout: '/locfuho',
+        path: "/contact",
+        component: Contact,
     },
 ]
 
