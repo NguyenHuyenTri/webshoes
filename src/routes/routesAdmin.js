@@ -41,9 +41,15 @@ var dashRoutes = [{
         component: AddProduct,
         layout: "/admin",
         display: true,
-        nav: false
     },
-
+    {
+        path: "/order",
+        name: "Orders",
+        icon: "education_paper",
+        component: ListOrder,
+        layout: "/admin",
+        display: true,
+    },
     {
         path: "/brandname",
         name: "Brand & Gender List",

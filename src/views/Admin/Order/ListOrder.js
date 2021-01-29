@@ -111,12 +111,28 @@ export default function ListOrder() {
                                 <th>Product Name</th>
                                 <th>Price</th>
                                 <th>Amout</th>
-                                <th>Image
-                                </th>
-                                <th>Details</th>
+                                <th>Image</th>
                             </tr>
                             </thead>
-                            <tbody></tbody>
+                            <tbody>
+                            {bag.map((props,index)=>{
+                              return(
+                                  <tr key={index} className='text-center'>
+                                      <td >{index}</td>
+                                      <td >{props.brandName}</td>
+                                      <td >{props.productName}</td>
+                                      <td >{props.price}</td>
+                                      <td>{props.amount}</td>
+                                      <td >
+                                          <img className='img-fluid rounded'
+                                               src={props.image}
+                                               alt="..." width='100px'
+                                               height='100px'/>
+                                      </td>
+                                  </tr>
+                              )
+                            })}
+                            </tbody>
                         </Table>
                 </Modal.Body>
                 <Modal.Footer>

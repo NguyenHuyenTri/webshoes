@@ -1,13 +1,11 @@
-import React, { useRef,useState }from "react";
-import ReactDOM from "react-dom";
+import React, { useRef}from "react";
 import { useForm } from "react-hook-form";
 import 'static/website/css/contact/contact.css'
 import NotificationAlert from "react-notification-alert";
-import { NavLink, Row, Col, Form, Button,Textarea,FormControl } from "react-bootstrap";
+import { Row, Col, Form, Button, } from "react-bootstrap";
 
 export default function Contact() {
   const notificationAlert =useRef(null);
-  const [show, setShow] = useState(false);
   const Alert = (status,message) =>{
     let options = {};
     options = {
@@ -56,38 +54,38 @@ export default function Contact() {
         <Row>
           <Col md={6} sm={12}>
             <div className="mt-5">
-              <img className="mt-4"src="https://d3pbdh1dmixop.cloudfront.net/spark/Blog/spark-mail-arrives-on-android/Spark%20-%20Features.png"/>
+              <img className="mt-4"src="https://d3pbdh1dmixop.cloudfront.net/spark/Blog/spark-mail-arrives-on-android/Spark%20-%20Features.png"
+                alt=''/>
             </div>
           </Col>
           <Col md={6} sm={12}>
             <h2>Contact Us</h2>
             <Form onSubmit={handleSubmit(onSubmit)}>
-            <Form.Group ontrolId="customerName">
+            <Form.Group >
                 <Form.Control type="text" name="fullName" placeholder="Enter Name" ref={register({ required: true })} />
-                <p class="textvalidate"> {errors.fullName && "Name is required"} </p>
+                <p className="textvalidate"> {errors.fullName && "Name is required"} </p>
               </Form.Group>
-              <Form.Group controlId="customerEmail">
+              <Form.Group >
                 <Form.Control type="email" name="email" placeholder="Enter email" ref={register({ required: true })} />
-                <p class="textvalidate"> {errors.email && "Email is required"} </p>
+                <p className="textvalidate"> {errors.email && "Email is required"} </p>
               </Form.Group>
-              <Form.Group controlId="customerPhone">
+              <Form.Group >
                 <Form.Control type="phone" name="phone" placeholder="Enter phone number" ref={register({ required: true })} />
-                <p class="textvalidate"> {errors.phone && "Phone is required"} </p>
+                <p className="textvalidate"> {errors.phone && "Phone is required"} </p>
               </Form.Group>
-              <Form.Group controlId="customerTitle">
+              <Form.Group >
                 <Form.Control type="text" name="title" placeholder="Enter Title" ref={register({ required: true })} />
-                <p class="textvalidate"> {errors.title && "Title is required"} </p>
+                <p className="textvalidate"> {errors.title && "Title is required"} </p>
               </Form.Group>
-              <Form.Group controlId="ControlTextarea1">
+              <Form.Group >
                 <Form.Control as="textarea" name="content" placeholder="Enter Text" ref={register({ required: true })} />
-                <p class="textvalidate"> {errors.content && "Cotent is required"} </p>
+                <p className="textvalidate"> {errors.content && "Cotent is required"} </p>
               </Form.Group>
               <Form.Group hidden>
                 <Form.Control name="isStatus" ref={register}  />
               </Form.Group>
-              {/* <FormError isHidden={this.state.isInputValid} errorMessage={this.state.errorMessage}></FormError> */}
               <Button variant="success" type="submit">
-                Send <i class="fas fa-arrow-circle-right"></i>
+                Send <i className="fas fa-arrow-circle-right"></i>
               </Button>
             </Form>
           </Col>
