@@ -8,11 +8,12 @@ import "static/assets/css/demo.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "static/assets/scss/now-ui-dashboard.scss?v1.4.0";
 
-// import Upgrade from "views/Upgrade.js";
 import AddProduct from "views/Admin/Product/AddProduct";
 import PageWoman from "../views/Admin/Page/Woman/PageWoman";
 import PageKid from "../views/Admin/Page/Kid/PageKid";
 import ListContact from "../views/Admin/Contact/ListContact";
+import ListOrder from "../views/Admin/Order/ListOrder";
+
 
 
 var dashRoutes = [{
@@ -101,5 +102,6 @@ var dashRoutes = [{
         layout: "/admin",
         display: true,
     },
+
 ];
 export default dashRoutes;
