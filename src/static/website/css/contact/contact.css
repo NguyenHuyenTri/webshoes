@@ -20,3 +20,8 @@
     border-radius: 20px;
     padding: 11px 35px;
 }
+
+.main-contact .textvalidate {
+    color: red;
+    margin-left: 10px;
+}
