@@ -1,14 +1,17 @@
 import React from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
-  faTrash,faEdit,faFastBackward,faStepBackward,faStepForward,faFastForward
+  faTrash, faEdit, faFastBackward, faStepBackward, faStepForward, faFastForward, faEye,
 } from "@fortawesome/free-solid-svg-icons";
 
-import {Card, CardHeader, CardBody, Row, Col, Table, InputGroup, Input,
-  InputGroupAddon, InputGroupText, Button, CardFooter, FormGroup,
-  Form,
+import {
+  Card, CardHeader, CardBody, Row, Col, Table, InputGroup, Input,
+  InputGroupAddon, InputGroupText, CardFooter, FormGroup,
+  Form, Label, FormFeedback,
 
 } from "reactstrap";
+
+import {Button} from 'react-bootstrap'
 import PanelHeader from "components/Admin/PanelHeader/PanelHeader.js";
 import { productList, thead,} from 'variables/product';
 import {brandNameList} from "variables/data";
@@ -18,6 +21,7 @@ import NotificationAlert from "react-notification-alert";
 import {Link} from "react-router-dom";
 import {formatNumber} from "views/to_slug";
 import {SearchProduct} from 'components/Search'
+import Modal from "react-bootstrap/Modal";
 
 class ProductList extends React.Component {
 
@@ -32,11 +36,19 @@ class ProductList extends React.Component {
       productListPerPage:4,
       handleChangeSelect:'',
       visiblee:false,
+      dataImageProduct:[],
+      showDataImage:false,
+      key:0,
+      update:false,
+      imagePreviewUrl:'',img:'',
     };
     this.deteleProduct=this.deteleProduct.bind(this);
+    this.handleChangeImage=this.handleChangeImage.bind(this)
   }
 
+  validState={
 
+  }
 
   componentDidMount() {
     this.getProductList()
@@ -180,7 +192,78 @@ class ProductList extends React.Component {
     event.preventDefault();
   }
 
+  viewImage = (data ,key,event) =>{
+        this.setState({
+          dataImageProduct:data,
+          showDataImage:true,
+          key:key
+        })
+      event.preventDefault()
+  }
+  deteleImage = (index)=>{
+    console.log(index)
+    let temp =this.state.dataImageProduct;
+    let dataProduct =productList;
+    temp.splice(index,1)
+    dataProduct[index].dataImage=temp;
+    this.setState({dataImageProduct:temp})
+    localStorage.setItem('localProduct',JSON.stringify(dataProduct))
+  }
+  updateImage = () =>{
+      this.setState({update:true})
+  }
+  handleChangeImage = (event) =>{
+    event.preventDefault();
+    if (event.target.value){
+      let reader = new FileReader();
+      let file = event.target.files[0];
+      let fileType = event.target.files[0].type;
 
+      switch(fileType) {
+        case 'image/png':
+        case 'image/gif':
+        case 'image/jpeg':
+        case 'image/pjpeg':
+          reader.onloadend = () =>{
+            this.setState({
+              file:file,
+              imagePreviewUrl:reader.result,
+              validImage: true,
+              invalidImage: false,
+              messageImage:'Acceptable image file!',
+              image:reader.result,
+            })
+          }
+          break;
+        default:
+          this.setState({
+            validImage: false,
+            invalidImage: true,
+            messageImage:'Unsupported File',
+            image:''
+          })
+      }
+      reader.readAsDataURL(file);
+    }else{
+      this.setState({
+        validImage: false,
+        invalidImage: true,
+        messageImage:'',
+        imagePreviewUrl:'',
+      })
+    }
+  }
+  saveImage=(event)=>{
+    if (this.state.validImage===true){
+      let temp =this.state.dataImageProduct;
+      let dataProduct =productList;
+      temp.unshift(this.state.imagePreviewUrl)
+      dataProduct[this.state.key].dataImage=temp;
+      this.setState({dataImageProduct:temp,update:false})
+      localStorage.setItem('localProduct',JSON.stringify(dataProduct))
+    }
+    event.preventDefault()
+  }
 
   render() {
     const {productList,visible,image} =this.state;
@@ -190,7 +273,9 @@ class ProductList extends React.Component {
     const firstIndex =lastIndex - productListPerPage;
     const currentProductList = productList.slice(firstIndex,lastIndex);
     const totalPages = productList.length/productListPerPage;
-
+    const {dataImageProduct,showDataImage}=this.state;
+    const {messageImage,invalidImage ,validImage,imagee} =this.state
+    const {update}=this.state;
     return (
       <>
         <PanelHeader size="sm" />
@@ -259,11 +344,17 @@ class ProductList extends React.Component {
 
                               </td>
                               <td className="text-right">
+                                <Button size='sm' variant='secondary '
+                                        className='mb-1 mb-lg-0'
+                                        onClick={this.viewImage.bind(this,prop.dataImage,key)}
+                                >
+                                  <FontAwesomeIcon  icon={faEye}/>
+                                </Button>{' '}
                                 <Link size='sm'  className="btn btn-sm btn-outline-primary"
                                       to={'/admin/update/'+(key)}
                                     >
                                   <FontAwesomeIcon  icon={faEdit}/></Link>{' '}
-                                <Button size='sm' outline color="danger"
+                                <Button size='sm' variant='danger'
                                         onClick={this.deteleProduct.bind(this ,key)}>
                                   <FontAwesomeIcon  icon={faTrash}/></Button>
                               </td>
@@ -326,7 +417,84 @@ class ProductList extends React.Component {
             />
           </div>
         </div>
+        <Modal show={showDataImage} aria-labelledby="contained-modal-title-vcenter"
+               backdrop="static"
+               size="lg"
+               centered
+               onHide={()=>this.setState({showDataImage:false})}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title id="contained-modal-title-vcenter">
+              <Button size='sm' variant='secondary'
+                                           className='mb-1 mb-lg-0'
+                                           onClick={this.updateImage}
+            > New {' '}
+              <i className="now-ui-icons ui-1_simple-add" style={{'fontSize': '13px'}}></i>
+            </Button>{' '}
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body className="show-grid">
+            <div  style={{ display: update===true ? 'none':'block' }}>
+              <Table responsive hover >
+                <thead className="text-primary">
+                <tr className='text-center'>
+                  <th>#</th>
+                  <th>Image</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+                </thead>
+                <tbody >
+                {dataImageProduct.map((props,index)=>{
+                  return(
+                      <tr key={index} className='text-center'>
+                        <td >{index}</td>
+                        <td >
+                          <img className='img-fluid rounded'
+                               src={props}
+                               alt="..." width='500px'
+                               height='400px'/>
+                        </td>
+                        <td className="text-right" width='50px'>
 
+                          <Button size='sm' variant='danger'
+                                  className='mb-1 mb-lg-0 '
+                                  onClick={this.deteleImage.bind(this,index)}
+                          >
+                            <FontAwesomeIcon  icon={faTrash}
+
+                            />
+                          </Button>
+                        </td>
+
+                      </tr>
+                  )
+                })}
+                </tbody>
+              </Table>
+            </div>
+            <div style={{ display: update===false ? 'none':'block' }}>
+              <Row>
+                <Col md='12' className='my-1'>
+                  <FormGroup>
+                    <Label >Image</Label>
+                  </FormGroup>
+                  <Input type="file" id="imageFile"
+                         defaultValue={imagee} name='imagee'
+                         valid={validImage}
+                         invalid={invalidImage}
+                         onChange={this.handleChangeImage} />
+                  <FormFeedback valid>{messageImage}</FormFeedback>
+                  <FormFeedback >{messageImage}</FormFeedback>
+                </Col>
+                <Button variant='secondary ml-3' onClick={this.saveImage}>Save</Button>
+              </Row>
+            </div>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button onClick={()=>{this.setState({showDataImage:false})}}>Close</Button>
+          </Modal.Footer>
+        </Modal>
       </>
     );
   }

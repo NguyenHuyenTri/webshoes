@@ -7,21 +7,17 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEye, faTrash} from "@fortawesome/free-solid-svg-icons";
 import Modal from "react-bootstrap/Modal";
 
-console.log(pay)
 export default function ListOrder() {
 
     const [payList]=useState(pay)
     const [show, setShow] = useState(false);
     const [bag,setBag]=useState([]);
-    const viewOrder = (data,event) =>{
+    const viewOrder = (data ,event) =>{
         setShow(true)
         let x = data;
         setBag(x);
         event.preventDefault()
     }
-
-    console.log(bag)
-
     return(
         <>
             <PanelHeader
@@ -70,7 +66,7 @@ export default function ListOrder() {
                                                         <td className="text-right" width='150px'>
                                                             <Button size='sm' outline color="danger"
                                                                     className='mb-1 mb-lg-0'
-                                                                    onClick={viewOrder.bind(this,props.bag)}
+                                                                    onClick={viewOrder.bind(this,(props.bag))}
                                                             >
                                                                 <FontAwesomeIcon  icon={faEye}/>
                                                             </Button>{' '}

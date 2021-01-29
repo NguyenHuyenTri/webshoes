@@ -85,7 +85,6 @@ export default function Pay() {
                 bag:card,
             }
             x.unshift(tempPay)
-
             localStorage.setItem('localBag',JSON.stringify([]))
             localStorage.setItem('localPay',JSON.stringify(x))
             setTimeout(()=>{

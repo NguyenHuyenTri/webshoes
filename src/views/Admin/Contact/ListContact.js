@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import PanelHeader from "components/Admin/PanelHeader/PanelHeader";
 import {Button, Card, CardBody, CardHeader, CardTitle, Col, Row, Table} from "reactstrap";
 import Accordion from "react-bootstrap/Accordion";
-import {pay} from "variables/paybag";
 import {dataContact} from "variables/contact";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEye, faTrash} from "@fortawesome/free-solid-svg-icons";
@@ -21,7 +20,7 @@ export default function ListContact() {
         x.push(dataObj);
         setContactDetail(x);
         event.preventDefault();
-        if(dataObj.isStatus == "false"){
+        if(dataObj.isStatus === "false"){
           dataObj.isStatus = "true";
           console.log(dataContact);
           localStorage.setItem('localContact',JSON.stringify(dataContact));

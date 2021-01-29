@@ -42,6 +42,7 @@ var dashRoutes = [{
         layout: "/admin",
         display: true,
     },
+
     {
         path: "/order",
         name: "Orders",
